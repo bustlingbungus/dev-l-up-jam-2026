@@ -1,4 +1,15 @@
-extends Node
+class_name WorkspaceArea extends Node
+
+enum WorkspaceZone
+{
+	MAIN_WORKSPACE,
+	INCOMING_BIN,
+	OUTGOING_BIN,
+	BACKGROUND
+}
+
+
+@export var workspaceZone : WorkspaceZone = WorkspaceZone.MAIN_WORKSPACE
 
 
 # Called when the node enters the scene tree for the first time.

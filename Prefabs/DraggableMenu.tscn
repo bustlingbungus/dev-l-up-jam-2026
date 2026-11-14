@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://dk8t7ji33ij7j"]
+
+[ext_resource type="Texture2D" uid="uid://duq0vdnorbb3g" path="res://Art Assets/Placeholder/4ov34bcynkh21.jpg" id="1_n8y0d"]
+[ext_resource type="Script" uid="uid://d1rf8jwv4350v" path="res://Scripts/draggable_menu.gd" id="2_72yv3"]
+[ext_resource type="PackedScene" uid="uid://c7gfjtkgc11y3" path="res://Prefabs/MenuTemplate.tscn" id="3_sghar"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1in3n"]
+size = Vector2(749, 754)
+
+[node name="DraggableMenu" type="Sprite2D" unique_id=1353970121]
+process_mode = 3
+texture = ExtResource("1_n8y0d")
+script = ExtResource("2_72yv3")
+MaximizedMenu = ExtResource("3_sghar")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1016613155]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1858935037]
+position = Vector2(-0.5, 1)
+shape = SubResource("RectangleShape2D_1in3n")

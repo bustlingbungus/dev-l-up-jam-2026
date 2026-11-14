@@ -16,7 +16,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if (Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT)):
+	if (Input.is_mouse_button_pressed(MOUSE_BUTTON_RIGHT)):
 		if (_mouse_hover && !_triggered):
 			_triggered = true
 			if (menuRef != null):
