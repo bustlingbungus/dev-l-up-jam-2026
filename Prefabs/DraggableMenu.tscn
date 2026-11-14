@@ -9,9 +9,11 @@ size = Vector2(749, 754)
 
 [node name="DraggableMenu" type="Sprite2D" unique_id=1353970121]
 process_mode = 3
+scale = Vector2(0.335, 0.335)
 texture = ExtResource("1_n8y0d")
 script = ExtResource("2_72yv3")
 MaximizedMenu = ExtResource("3_sghar")
+SubmissionTravelTime = 1.5
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1016613155]
 

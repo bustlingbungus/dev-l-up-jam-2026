@@ -20,16 +20,17 @@ func _process(delta: float) -> void:
 
 
 func OnWordErased(word : MenuWord) -> void:
-	#print("turkeys caught:")
-	#print(TurkeysDetected)
-	#print("out of")
-	#print(TotalTurkeys)
-	#print("false positives")
-	#print(FalseErases)
-	#print()
-	#print()
 	pass
 
+func PrintStats() -> void:
+	print("turkeys caught:")
+	print(TurkeysDetected)
+	print("out of")
+	print(TotalTurkeys)
+	print("false positives")
+	print(FalseErases)
+	print()
+	print()
 
 func assign_word_refs(node : Node, menu : MenuTemplate) -> void:
 	# depth first search children, if it is a word, assign
