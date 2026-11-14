@@ -1,0 +1,53 @@
+[gd_scene format=3 uid="uid://bes82oyjsfklw"]
+
+[ext_resource type="Script" uid="uid://r7vrceq5wg6q" path="res://Scripts/menu_template.gd" id="1_lnh6j"]
+[ext_resource type="Texture2D" uid="uid://ot8e1qde8iq7" path="res://Art Assets/Menus/crayon_on_paper.png" id="2_bhq28"]
+[ext_resource type="PackedScene" uid="uid://dmnnmjpmf81gd" path="res://Prefabs/RandomizedWord.tscn" id="3_wks8g"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_75itx"]
+size = Vector2(654, 450)
+
+[node name="Menu" type="Node2D" unique_id=686237547]
+script = ExtResource("1_lnh6j")
+metadata/_edit_vertical_guides_ = [-103.0]
+
+[node name="MenuBackground" type="Sprite2D" parent="." unique_id=1504351107]
+texture = ExtResource("2_bhq28")
+metadata/_edit_use_anchors_ = true
+
+[node name="text" type="Node2D" parent="MenuBackground" unique_id=1299245288]
+
+[node name="randomized" type="Node2D" parent="MenuBackground/text" unique_id=1108023106]
+
+[node name="RandomizedWord" parent="MenuBackground/text/randomized" unique_id=965452560 instance=ExtResource("3_wks8g")]
+offset_left = -188.0
+offset_top = -73.0
+offset_right = 139.0
+offset_bottom = -21.0
+mouse_filter = 1
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 33
+
+[node name="RandomizedWord2" parent="MenuBackground/text/randomized" unique_id=858526719 instance=ExtResource("3_wks8g")]
+offset_left = -198.0
+offset_top = 45.0
+offset_right = 156.0
+offset_bottom = 97.0
+mouse_filter = 1
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 32
+
+[node name="RandomizedWord3" parent="MenuBackground/text/randomized" unique_id=63076526 instance=ExtResource("3_wks8g")]
+offset_left = -204.0
+offset_top = 122.0
+offset_right = 150.0
+offset_bottom = 174.0
+mouse_filter = 1
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 32
+
+[node name="Area2D" type="Area2D" parent="." unique_id=864369663]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1417624882]
+position = Vector2(1, 0)
+shape = SubResource("RectangleShape2D_75itx")

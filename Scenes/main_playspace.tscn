@@ -4,8 +4,9 @@
 [ext_resource type="Texture2D" uid="uid://753oe08m6ja7" path="res://Art Assets/Placeholder/toughbird.jpg" id="1_jbq2g"]
 [ext_resource type="Script" uid="uid://bxypjdfrfqoaq" path="res://Scripts/WorkspaceArea.gd" id="2_t1qhy"]
 [ext_resource type="Texture2D" uid="uid://cbqj5no2x2rw3" path="res://Art Assets/Placeholder/Screenshot from 2026-11-01 18-10-10.png" id="3_l5cqv"]
-[ext_resource type="PackedScene" uid="uid://dk8t7ji33ij7j" path="res://Prefabs/DraggableMenu.tscn" id="4_6424o"]
 [ext_resource type="Script" uid="uid://dye6pi61bam21" path="res://Scripts/draggable_menu_spawber.gd" id="5_ylxo0"]
+[ext_resource type="PackedScene" uid="uid://drs3kn7saje1p" path="res://Prefabs/Menus/Draggables/Draggable1.tscn" id="6_2ad61"]
+[ext_resource type="PackedScene" uid="uid://dsft7fotlpstq" path="res://Prefabs/Menus/Draggables/Draggable2.tscn" id="7_ixtrt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fs538"]
 size = Vector2(219.27272, 216.38318)
@@ -63,7 +64,7 @@ shape = SubResource("RectangleShape2D_l5cqv")
 [node name="MenuSpawner" type="Node2D" parent="." unique_id=1339380053]
 position = Vector2(200.25, 124.915)
 script = ExtResource("5_ylxo0")
-DraggableMenus = Array[PackedScene]([ExtResource("4_6424o")])
+DraggableMenus = Array[PackedScene]([ExtResource("6_2ad61"), ExtResource("7_ixtrt")])
 
 [node name="MenuTarget" type="Node2D" parent="MenuSpawner" unique_id=1172741195]
 position = Vector2(0, 761.27)

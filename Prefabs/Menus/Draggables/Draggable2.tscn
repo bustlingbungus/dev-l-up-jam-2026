@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://dsft7fotlpstq"]
+
+[ext_resource type="Texture2D" uid="uid://ddo4wpxflvhop" path="res://Art Assets/Placeholder/f1racer.png" id="1_sroa4"]
+[ext_resource type="Script" uid="uid://d1rf8jwv4350v" path="res://Scripts/draggable_menu.gd" id="2_py435"]
+[ext_resource type="PackedScene" uid="uid://dtvv4y1gu51wy" path="res://Prefabs/Menus/FullMenus/Menu2.tscn" id="3_sroa4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1in3n"]
+size = Vector2(510.44775, 504.4776)
+
+[node name="DraggableMenu" type="Sprite2D" unique_id=1353970121]
+process_mode = 3
+scale = Vector2(0.335, 0.335)
+texture = ExtResource("1_sroa4")
+script = ExtResource("2_py435")
+MaximizedMenu = ExtResource("3_sroa4")
+SubmissionTravelTime = 1.5
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1016613155]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1858935037]
+position = Vector2(-1.4925373, -1.4925373)
+shape = SubResource("RectangleShape2D_1in3n")
