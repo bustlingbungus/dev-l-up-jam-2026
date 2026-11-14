@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://dmnnmjpmf81gd"]
+
+[ext_resource type="Script" uid="uid://vohuvennxm33" path="res://Scripts/randomized_word.gd" id="1_lotee"]
+
+[node name="RandomizedWord" type="RichTextLabel" unique_id=63076526]
+offset_right = 204.0
+offset_bottom = 27.0
+text = "Randomized Word"
+script = ExtResource("1_lotee")
+MenuFile = "res://JSON/menu.json"

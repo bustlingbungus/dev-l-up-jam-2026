@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://br5p21542pvkm"]
+
+[node name="MainPlayspace" type="Node2D" unique_id=1767193502]
+
+[node name="Workspace" type="ColorRect" parent="." unique_id=244562902]
+offset_left = 480.0
+offset_top = 270.0
+offset_right = 1440.0
+offset_bottom = 1080.0
+color = Color(0.37550277, 0.20991522, 0.023208167, 1)
+
+[node name="IncomingBin" type="ColorRect" parent="." unique_id=2063651013]
+offset_top = 270.0
+offset_right = 480.0
+offset_bottom = 1080.0
+color = Color(0.14729944, 0.0720331, 0.004956884, 1)
+
+[node name="OutgoingBin" type="ColorRect" parent="." unique_id=352402956]
+offset_left = 1440.0
+offset_top = 270.0
+offset_right = 1920.0
+offset_bottom = 1080.0
+color = Color(0.14901961, 0.07058824, 0.003921569, 1)
+
+[node name="OutgoingBin2" type="ColorRect" parent="." unique_id=1380176333]
+offset_left = 1095.0
+offset_top = 150.0
+offset_right = 1112.725
+offset_bottom = 960.0
+color = Color(0, 0.25523552, 0.45022535, 1)

@@ -1,0 +1,127 @@
+[gd_scene format=3 uid="uid://c7gfjtkgc11y3"]
+
+[ext_resource type="Script" uid="uid://r7vrceq5wg6q" path="res://Scripts/menu_template.gd" id="1_6s0c6"]
+[ext_resource type="PackedScene" uid="uid://i1d6wtq1ggey" path="res://Prefabs/MenuWord.tscn" id="1_rtccf"]
+[ext_resource type="PackedScene" uid="uid://dmnnmjpmf81gd" path="res://Prefabs/RandomizedWord.tscn" id="3_xmi6d"]
+
+[node name="Menu" type="Node2D" unique_id=686237547]
+script = ExtResource("1_6s0c6")
+metadata/_edit_vertical_guides_ = [-103.0]
+
+[node name="MenuBackground" type="ColorRect" parent="." unique_id=1818749157]
+offset_left = -167.0
+offset_top = -214.0
+offset_right = 171.0
+offset_bottom = 219.0
+color = Color(0.784688, 0.61485136, 0.49506903, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="text" type="Node2D" parent="MenuBackground" unique_id=1299245288]
+
+[node name="MenuWord" parent="MenuBackground/text" unique_id=63076526 instance=ExtResource("1_rtccf")]
+offset_left = 112.0
+offset_top = 8.0
+offset_right = 216.0
+offset_bottom = 34.0
+text = "Dinner Menu"
+metadata/_edit_use_anchors_ = true
+
+[node name="MenuWord2" parent="MenuBackground/text" unique_id=852531385 instance=ExtResource("1_rtccf")]
+offset_left = 14.0
+offset_top = 38.0
+offset_right = 61.0
+offset_bottom = 64.0
+text = "These"
+metadata/_edit_use_anchors_ = true
+
+[node name="MenuWord3" parent="MenuBackground/text" unique_id=2140993248 instance=ExtResource("1_rtccf")]
+offset_left = 63.0
+offset_top = 38.0
+offset_right = 92.0
+offset_bottom = 64.0
+text = "will"
+metadata/_edit_use_anchors_ = true
+
+[node name="MenuWord4" parent="MenuBackground/text" unique_id=585266074 instance=ExtResource("1_rtccf")]
+offset_left = 97.0
+offset_top = 38.0
+offset_right = 118.0
+offset_bottom = 64.0
+text = "be"
+metadata/_edit_use_anchors_ = true
+
+[node name="MenuWord5" parent="MenuBackground/text" unique_id=989781383 instance=ExtResource("1_rtccf")]
+offset_left = 122.0
+offset_top = 38.0
+offset_right = 149.0
+offset_bottom = 64.0
+text = "the"
+metadata/_edit_use_anchors_ = true
+
+[node name="MenuWord6" parent="MenuBackground/text" unique_id=1071163495 instance=ExtResource("1_rtccf")]
+offset_left = 152.0
+offset_top = 38.0
+offset_right = 199.0
+offset_bottom = 64.0
+text = "main"
+metadata/_edit_use_anchors_ = true
+
+[node name="MenuWord7" parent="MenuBackground/text" unique_id=604946465 instance=ExtResource("1_rtccf")]
+offset_left = 196.0
+offset_top = 37.0
+offset_right = 259.0
+offset_bottom = 63.0
+text = "courses"
+metadata/_edit_use_anchors_ = true
+
+[node name="MenuWord8" parent="MenuBackground/text" unique_id=1569892136 instance=ExtResource("1_rtccf")]
+offset_left = 259.0
+offset_top = 37.0
+offset_right = 283.0
+offset_bottom = 63.0
+text = "for"
+metadata/_edit_use_anchors_ = true
+
+[node name="MenuWord9" parent="MenuBackground/text" unique_id=1255302076 instance=ExtResource("1_rtccf")]
+offset_left = 94.0
+offset_top = 62.0
+offset_right = 124.0
+offset_bottom = 88.0
+text = "our"
+metadata/_edit_use_anchors_ = true
+
+[node name="MenuWord10" parent="MenuBackground/text" unique_id=223391946 instance=ExtResource("1_rtccf")]
+offset_left = 126.0
+offset_top = 63.0
+offset_right = 167.0
+offset_bottom = 89.0
+text = "feast"
+metadata/_edit_use_anchors_ = true
+
+[node name="MenuWord11" parent="MenuBackground/text" unique_id=770235565 instance=ExtResource("1_rtccf")]
+offset_left = 175.0
+offset_top = 63.0
+offset_right = 237.0
+offset_bottom = 89.0
+text = "tonight!"
+metadata/_edit_use_anchors_ = true
+
+[node name="randomized" type="Node2D" parent="MenuBackground/text" unique_id=1108023106]
+
+[node name="RandomizedWord" parent="MenuBackground/text/randomized" unique_id=965452560 instance=ExtResource("3_xmi6d")]
+offset_left = 22.0
+offset_top = 106.0
+offset_right = 226.0
+offset_bottom = 133.0
+
+[node name="RandomizedWord2" parent="MenuBackground/text/randomized" unique_id=858526719 instance=ExtResource("3_xmi6d")]
+offset_left = 21.0
+offset_top = 136.0
+offset_right = 225.0
+offset_bottom = 163.0
+
+[node name="RandomizedWord3" parent="MenuBackground/text/randomized" unique_id=2100788273 instance=ExtResource("3_xmi6d")]
+offset_left = 23.0
+offset_top = 164.0
+offset_right = 227.0
+offset_bottom = 191.0

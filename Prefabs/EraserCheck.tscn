@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://enuydaghnenb"]
+
+[ext_resource type="Script" uid="uid://bgnikfirlwt5d" path="res://Scripts/eraser_check.gd" id="1_twuwj"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1in3n"]
+radius = 33.13608
+
+[node name="EraserCheck" type="Area2D" unique_id=468579439]
+script = ExtResource("1_twuwj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=927933120]
+shape = SubResource("CircleShape2D_1in3n")

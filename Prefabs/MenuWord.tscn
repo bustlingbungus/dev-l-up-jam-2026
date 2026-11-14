@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://i1d6wtq1ggey"]
+
+[ext_resource type="Script" uid="uid://vw0bitw7kfw" path="res://Scripts/MenuWord.gd" id="1_0qpec"]
+
+[node name="MenuWord" type="RichTextLabel" unique_id=63076526]
+offset_right = 50.0
+offset_bottom = 25.0
+text = "Lorem"
+script = ExtResource("1_0qpec")
