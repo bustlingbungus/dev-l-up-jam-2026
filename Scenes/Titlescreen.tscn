@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://c874niwsfs1ci" path="res://Scenes/IntroCutscene.tscn" id="3_yvq8y"]
 [ext_resource type="Texture2D" uid="uid://xree0yo8ddn0" path="res://Art Assets/None_Turkey.png" id="4_yvq8y"]
 [ext_resource type="AudioStream" uid="uid://d3d0mux8fqsw5" path="res://Audio Assets/Music/New 3 2026-11-15 1432.mp3" id="5_s43k1"]
+[ext_resource type="Texture2D" uid="uid://di2whcxl5qtvu" path="res://Art Assets/None_logo.png" id="6_xpg8h"]
 
 [node name="Titlescreen" type="Control" unique_id=965093756]
 layout_mode = 3
@@ -93,5 +94,10 @@ texture = ExtResource("4_yvq8y")
 stream = ExtResource("5_s43k1")
 autoplay = true
 parameters/looping = true
+
+[node name="NoneLogo" type="Sprite2D" parent="." unique_id=1116357512]
+position = Vector2(1129.9, 298.69998)
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("6_xpg8h")
 
 [connection signal="pressed" from="PlayButton" to="." method="PlayButton"]
