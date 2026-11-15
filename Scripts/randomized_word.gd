@@ -31,28 +31,99 @@ func LoadMenu() -> void:
 					for k in data:
 						keys.append(k)
 					
+					
 					if (keys.size() > 1):
-						# get random index
-						var idx = randi_range(0, keys.size() - 1)
-						# this is bad
-						while (!_is_good_index(idx)):
-							idx = randi_range(0, keys.size() - 1)
+						if (!_menu_has_available_indices(keys.size())):
+							queue_free()
+							return
+						
+						var indices = _get_available_indices(keys)
+						var idx = indices[randi_range(0, indices.size() - 1)]
 						# good index found
-						IsTurkey = data[keys[idx]]
-						if (IsTurkey):
-							menuRef.TotalTurkeys += 1
+						var rulesheets = _get_rulesheets()
+						var rs = menuRef as RuleSheet
+						var default_val : bool = data[keys[idx]]
+						
+						# this word is on a rulesheet, see if this is a valid label for a rulesheet, 
+						if (rs != null):
+							# make sure the label doesn't result in contradictions
+							# this is a very lazy solution
+							var depth : int = 0
+							var max_depth = 50
+							while (_label_exists_in_contradicting_rulesheets(rs, rulesheets, keys[idx], default_val) && depth < max_depth):
+								idx = indices[randi_range(0, indices.size() - 1)]
+								depth += 1
+							if (depth == max_depth):
+								queue_free()
+								return
+							# add this label to the rulesheet's labels
+							rs.labels.append(keys[idx])
+						
+						# word is on a normal menu, see if the label is a turkey
+						else:
+							# see what rulesheets have to say about this item
+							IsTurkey = _get_rulesheet_verdict(rulesheets, keys[idx], default_val)
+							
+							if (IsTurkey):
+								menuRef.TotalTurkeys += 1
+
+						# final commits before completing load
 						text = keys[idx]
 						menuRef.ChosenIndices[MenuFile].append(idx)
 						_loaded = true
 
 
-func _is_good_index(idx : int) -> bool:
+
+func _label_allowed_by_rulesheets() -> bool:
+	return false
+
+
+func _menu_has_available_indices(total_available_indices : int) -> bool:
+	if (!menuRef.ChosenIndices.has(MenuFile)):
+		return true
+	var indices_taken : int = menuRef.ChosenIndices[MenuFile].size()
+	return total_available_indices > indices_taken
+
+
+func _get_available_indices(keys : Array) -> Array[int]:
 	if (!menuRef.ChosenIndices.has(MenuFile)):
 		menuRef.ChosenIndices.get_or_add(MenuFile, [])
-		return true
-	else:
-		var chosen = menuRef.ChosenIndices[MenuFile]
-		if (idx in chosen):
+	# this has fucking horrible efficiency
+	# do not put this game on your resume until this is fixed
+	var arr : Array[int] = []
+	for i in range(keys.size()):
+		if (!i in menuRef.ChosenIndices[MenuFile]):
+			arr.append(i)
+	return arr
+
+
+func _get_rulesheets() -> Array[RuleSheet]:
+	var nodes = get_tree().get_nodes_in_group("Rulesheet")
+	var arr : Array[RuleSheet] = []
+	for n in nodes:
+		var rs = n as RuleSheet
+		if (rs != null):
+			arr.append(rs)
+	return arr
+
+func _get_rulesheet_verdict(rulesheets : Array[RuleSheet], label : String, default_val : bool) -> bool:
+	for rs in rulesheets:
+		if (rs.HasLabel(label)):
+			return rs.LabelIsTurkey(label)
+	return default_val
+
+func _label_exists_in_contradicting_rulesheets(this_rs : RuleSheet, other_rules : Array[RuleSheet], label : String, default_val : bool) -> bool:
+	for rs in other_rules:
+		if (rs.ruletype != this_rs.ruletype):
+			if (rs.HasLabel(label)):
+				return true
+	
+	# make sure label is not ambiguous in the current rulesheet
+	if (this_rs.ruletype == RuleSheet.RuleType.ALLOW):
+		if (!default_val):
 			return false
-		chosen.append(idx)
-		return true
+	elif (this_rs.ruletype == RuleSheet.RuleType.DISALLOW):
+		if (default_val):
+			return false
+	
+	return false

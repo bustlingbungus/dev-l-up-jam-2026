@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://c7gfjtkgc11y3"]
 
 [ext_resource type="Script" uid="uid://r7vrceq5wg6q" path="res://Scripts/menu_template.gd" id="1_6s0c6"]
-[ext_resource type="PackedScene" uid="uid://i1d6wtq1ggey" path="res://Prefabs/MenuWord.tscn" id="1_rtccf"]
-[ext_resource type="PackedScene" uid="uid://dmnnmjpmf81gd" path="res://Prefabs/RandomizedWord.tscn" id="3_xmi6d"]
+[ext_resource type="PackedScene" uid="uid://i1d6wtq1ggey" path="res://Prefabs/Words/MenuWord.tscn" id="1_rtccf"]
+[ext_resource type="PackedScene" uid="uid://dmnnmjpmf81gd" path="res://Prefabs/Words/RandomizedWord.tscn" id="3_xmi6d"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_75itx"]
 size = Vector2(341, 436)

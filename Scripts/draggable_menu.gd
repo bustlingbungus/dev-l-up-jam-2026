@@ -2,7 +2,7 @@ class_name DraggableMenu extends Sprite2D
 
 
 @export var MaximizedMenu : PackedScene = null
-var _maximized_menu : MenuTemplate = null
+var maximized_menu : MenuTemplate = null
 
 var _hovered : bool = false
 var _drag : bool = false
@@ -39,11 +39,11 @@ func _ready() -> void:
 		var instance = MaximizedMenu.instantiate()
 		if (instance != null):
 			get_parent().call_deferred("add_child", instance)
-			_maximized_menu = instance as MenuTemplate
-			if (_maximized_menu != null):
-				_maximized_menu.visible = false
+			maximized_menu = instance as MenuTemplate
+			if (maximized_menu != null):
+				maximized_menu.visible = false
 				
-				var max_area = _maximized_menu.get_node("Area2D") as Area2D
+				var max_area = maximized_menu.get_node("Area2D") as Area2D
 				if (max_area != null):
 					max_area.mouse_entered.connect(_mouse_enter)
 					max_area.mouse_exited.connect(_mouse_exit)
@@ -71,15 +71,15 @@ func _process(delta: float) -> void:
 			_spawn_travel_timer = max(0.0, _spawn_travel_timer - delta)
 			position = lerp(position, TargetPosition, 1 - (_spawn_travel_timer / SubmissionTravelTime))
 			if (_spawn_travel_timer <= 0.0):
-				SubmitMenu.emit(_maximized_menu)
+				SubmitMenu.emit(maximized_menu)
 				queue_free()
 		_:
 			if (_drag):
 				position = get_global_mouse_position() + _mouse_disp
 	
 	
-	if (_maximized_menu != null):
-		_maximized_menu.position = position
+	if (maximized_menu != null):
+		maximized_menu.position = position
 
 
 
@@ -115,11 +115,18 @@ func MakeNotDragged() -> void:
 				_spawn_travel_timer = SpawnTravelTime
 				TargetPosition.x = position.x
 	elif (_currSpace == WorkspaceArea.WorkspaceZone.OUTGOING_BIN):
-		Movestate = MoveState.SUBMISSION
 		TargetPosition.x = position.x
-		# nice magic number here
-		TargetPosition.y += 500.0
-		_spawn_travel_timer = SubmissionTravelTime
+		var rs = maximized_menu as RuleSheet
+		# normal menu, submit
+		if (rs == null):
+			Movestate = MoveState.SUBMISSION
+			# nice magic number here
+			TargetPosition.y += 500.0
+			_spawn_travel_timer = SubmissionTravelTime
+		# rulesheet, just drop
+		else:
+			Movestate = MoveState.SPAWNING
+			_spawn_travel_timer = SpawnTravelTime
 
 
 func _area_entered(area : Area2D) -> void:
@@ -127,15 +134,15 @@ func _area_entered(area : Area2D) -> void:
 		var ws : WorkspaceArea = area.get_parent() as WorkspaceArea
 		if (ws != null):
 			_currSpace = ws.workspaceZone
-			if (ws.workspaceZone == WorkspaceArea.WorkspaceZone.MAIN_WORKSPACE && _maximized_menu != null):
+			if (ws.workspaceZone == WorkspaceArea.WorkspaceZone.MAIN_WORKSPACE && maximized_menu != null):
 				visible = false
-				_maximized_menu.visible = true
+				maximized_menu.visible = true
 				
 	
 func _area_exited(area : Area2D) -> void:
 	if (area.get_parent() != null):
 		var ws : WorkspaceArea = area.get_parent() as WorkspaceArea
 		if (ws != null):
-			if (ws.workspaceZone == WorkspaceArea.WorkspaceZone.MAIN_WORKSPACE && _maximized_menu != null):
+			if (ws.workspaceZone == WorkspaceArea.WorkspaceZone.MAIN_WORKSPACE && maximized_menu != null):
 				visible = true
-				_maximized_menu.visible = false
+				maximized_menu.visible = false

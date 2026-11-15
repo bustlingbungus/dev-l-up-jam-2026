@@ -1,6 +1,7 @@
 class_name MenuWord extends RichTextLabel
 
 @export var IsTurkey : bool = false
+@export var Erasable : bool = true
 
 var menuRef : MenuTemplate = null
 
@@ -17,7 +18,7 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if (Input.is_mouse_button_pressed(MOUSE_BUTTON_RIGHT)):
-		if (_mouse_hover && !_triggered):
+		if (_mouse_hover && !_triggered && Erasable):
 			_triggered = true
 			if (menuRef != null):
 				if (IsTurkey):

@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://by6eyp6n4m715"]
+
+[ext_resource type="Texture2D" uid="uid://bjimqbhrbxryg" path="res://Art Assets/Menus/fancyish_try_blank.png" id="1_5wqrl"]
+[ext_resource type="Script" uid="uid://cjxs8r8nevipf" path="res://Scripts/rulesheet.gd" id="2_odsv7"]
+[ext_resource type="PackedScene" uid="uid://dmnnmjpmf81gd" path="res://Prefabs/Words/RandomizedWord.tscn" id="3_lkhxt"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1in3n"]
+size = Vector2(350, 551)
+
+[node name="Rulesheet" type="Sprite2D" unique_id=784805275 groups=["Rulesheet"]]
+texture = ExtResource("1_5wqrl")
+script = ExtResource("2_odsv7")
+ruletype = 1
+
+[node name="RandomizedWord" parent="." unique_id=63076526 instance=ExtResource("3_lkhxt")]
+offset_left = -153.0
+offset_top = -114.0
+offset_right = 51.0
+offset_bottom = -87.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+Erasable = false
+
+[node name="Area2D" type="Area2D" parent="." unique_id=822600163]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=725458012]
+position = Vector2(-1, -0.5)
+shape = SubResource("RectangleShape2D_1in3n")

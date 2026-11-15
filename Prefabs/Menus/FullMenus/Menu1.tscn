@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://r7vrceq5wg6q" path="res://Scripts/menu_template.gd" id="1_lnh6j"]
 [ext_resource type="Texture2D" uid="uid://ot8e1qde8iq7" path="res://Art Assets/Menus/crayon_on_paper.png" id="2_bhq28"]
-[ext_resource type="PackedScene" uid="uid://dmnnmjpmf81gd" path="res://Prefabs/RandomizedWord.tscn" id="3_wks8g"]
+[ext_resource type="PackedScene" uid="uid://dmnnmjpmf81gd" path="res://Prefabs/Words/RandomizedWord.tscn" id="3_wks8g"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_75itx"]
 size = Vector2(654, 450)
