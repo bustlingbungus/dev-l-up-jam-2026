@@ -104,6 +104,7 @@ position = Vector2(0, 761.27)
 stream = ExtResource("10_bknpk")
 
 [node name="Score" type="ColorRect" parent="." unique_id=548729549]
+z_index = 4010
 offset_left = 41.0
 offset_top = 26.0
 offset_right = 529.0
@@ -130,6 +131,7 @@ theme_override_font_sizes/normal_font_size = 50
 text = "Failed Menus: 0"
 
 [node name="Controls" type="ColorRect" parent="." unique_id=352014707]
+z_index = 4010
 offset_left = 6.0
 offset_top = 959.0
 offset_right = 1495.0
@@ -147,7 +149,7 @@ text = "Left Mouse: Drag | Right Mouse: Erase | Escape: Return to Menu"
 
 [node name="Fade" type="ColorRect" parent="." unique_id=329495511]
 visible = false
-z_index = 4000
+z_index = 4096
 offset_right = 1927.0
 offset_bottom = 1085.0
 mouse_filter = 2
@@ -159,15 +161,16 @@ FadeTime = 0.25
 autoFadeOnStart = true
 
 [node name="HandFollower" parent="." unique_id=1480644634 groups=["hand_follower"] instance=ExtResource("11_ovpdj")]
-z_index = 3000
+z_index = 4005
 position = Vector2(-1405, -292)
 
 [node name="Submissionbin" type="Node2D" parent="." unique_id=1818213912]
+z_index = 2000
 position = Vector2(1721, 930)
 scale = Vector2(1.205, 1.205)
 
 [node name="TrashBin" type="Sprite2D" parent="Submissionbin" unique_id=887990491]
-z_index = -1
+z_index = -2001
 scale = Vector2(0.475, 0.475)
 texture = ExtResource("13_rccvq")
 
@@ -177,6 +180,7 @@ scale = Vector2(0.475, 0.475)
 texture = ExtResource("14_6g7y0")
 
 [node name="ColorRect2" type="ColorRect" parent="." unique_id=279085663]
+z_index = 4010
 offset_left = 814.0
 offset_top = 214.0
 offset_right = 1108.0
@@ -205,7 +209,7 @@ texture = ExtResource("15_apqes")
 
 [node name="GameOverFallGamejam" type="Sprite2D" parent="." unique_id=265138160 node_paths=PackedStringArray("fadeCover")]
 visible = false
-z_index = 3500
+z_index = 4015
 position = Vector2(960, 540)
 texture = ExtResource("16_apqes")
 script = ExtResource("17_uj7a5")

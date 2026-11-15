@@ -55,7 +55,8 @@ func SelectDraggedMenu() -> void:
 	if (best_menu != null):
 		best_menu.MakeDragged()
 		
-		var _high_z = _find_highest_z_menu(self, -1) + 1
+		# this is a stupid magic number, because I don't understand my own god damn code
+		var _high_z = _find_highest_z_menu(self, -1) + 100
 		best_menu.z_index = _high_z
 		best_menu.maximized_menu.z_index = _high_z
 	

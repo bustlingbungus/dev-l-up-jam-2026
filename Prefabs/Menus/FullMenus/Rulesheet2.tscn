@@ -1,44 +1,51 @@
-[gd_scene format=3 uid="uid://hd85cye4o88s"]
+[gd_scene format=3 uid="uid://dmcapf2g4vqff"]
 
-[ext_resource type="Texture2D" uid="uid://bjimqbhrbxryg" path="res://Art Assets/Menus/fancyish_try_blank.png" id="1_ml6fe"]
+[ext_resource type="Texture2D" uid="uid://dw7nh1erj4goy" path="res://Art Assets/None_Restrictions.png" id="1_ml6fe"]
 [ext_resource type="Script" uid="uid://cjxs8r8nevipf" path="res://Scripts/rulesheet.gd" id="2_8alrd"]
 [ext_resource type="PackedScene" uid="uid://dmnnmjpmf81gd" path="res://Prefabs/Words/RandomizedWord.tscn" id="3_ohftn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1in3n"]
-size = Vector2(350, 552)
+size = Vector2(505.88235, 707.3529)
 
 [node name="Rulesheet" type="Sprite2D" unique_id=784805275 groups=["Rulesheet"]]
 z_index = -50
+scale = Vector2(0.6, 0.6)
 texture = ExtResource("1_ml6fe")
 script = ExtResource("2_8alrd")
 
-[node name="RandomizedWord2" parent="." unique_id=2145242696 instance=ExtResource("3_ohftn")]
-offset_left = -86.0
-offset_top = 83.0
-offset_right = 118.0
-offset_bottom = 110.0
+[node name="RandomizedWord" parent="." unique_id=63076526 instance=ExtResource("3_ohftn")]
+offset_left = -176.66666
+offset_top = 108.33333
+offset_right = 181.66666
+offset_bottom = 168.33331
 theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 32
+horizontal_alignment = 1
 Erasable = false
 
-[node name="RandomizedWord3" parent="." unique_id=1738702111 instance=ExtResource("3_ohftn")]
-offset_left = -87.0
-offset_top = 119.0
-offset_right = 117.0
-offset_bottom = 146.0
+[node name="RandomizedWord2" parent="." unique_id=1421839382 instance=ExtResource("3_ohftn")]
+offset_left = -186.66666
+offset_top = 36.666664
+offset_right = 186.66666
+offset_bottom = 91.66665
 theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 32
+horizontal_alignment = 1
 Erasable = false
 
 [node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=2013539244]
-offset_left = -105.0
+offset_left = -208.33331
 offset_top = -231.0
-offset_right = 105.0
-offset_bottom = -137.0
+offset_right = 213.33331
+offset_bottom = 23.333328
 theme_override_colors/default_color = Color(0, 0, 0, 1)
-text = "The following items will be made with meat alternatives, or WITHOUT turkey:"
+theme_override_font_sizes/normal_font_size = 40
+text = "Henceforth, these recipes will be made with VEGAN SUBSTITUTES"
 horizontal_alignment = 1
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1956084323]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=441280404]
-position = Vector2(1, 0)
+position = Vector2(2.8049239e-05, -2.205851)
+scale = Vector2(0.9999998, 0.9999998)
 shape = SubResource("RectangleShape2D_1in3n")

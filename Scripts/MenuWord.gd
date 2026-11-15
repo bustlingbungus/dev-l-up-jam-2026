@@ -17,7 +17,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if (Input.is_mouse_button_pressed(MOUSE_BUTTON_RIGHT)):
+	if (Input.is_action_just_pressed("ui_select")):
 		if (_mouse_hover && !_triggered && Erasable):
 			_triggered = true
 			if (menuRef != null):
