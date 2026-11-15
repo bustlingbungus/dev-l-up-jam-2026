@@ -54,9 +54,22 @@ func SelectDraggedMenu() -> void:
 	
 	if (best_menu != null):
 		best_menu.MakeDragged()
+		
+		var _high_z = _find_highest_z_menu(self, -1) + 1
+		best_menu.z_index = _high_z
+		best_menu.maximized_menu.z_index = _high_z
 	
 	# reset array
 	menu_array.clear()
+
+
+func _find_highest_z_menu(node : Node, high : int) -> int:
+	var drag = node as DraggableMenu
+	for child in node.get_children():
+		high = _find_highest_z_menu(child, high)
+	if (drag != null):
+		return max(max(drag.z_index, drag.maximized_menu.z_index), high)
+	return high
 
 
 func EndGame() -> void:

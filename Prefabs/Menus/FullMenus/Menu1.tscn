@@ -8,6 +8,7 @@
 size = Vector2(654, 450)
 
 [node name="Menu" type="Node2D" unique_id=686237547]
+z_index = -50
 script = ExtResource("1_lnh6j")
 metadata/_edit_vertical_guides_ = [-103.0]
 

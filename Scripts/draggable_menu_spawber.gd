@@ -8,7 +8,6 @@ extends Node2D
 @export var AddRulesheetChance : float = 0.5
 
 var _gamemode : Gamemode = null
-var _total_spawned_rulesheets : int = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -30,7 +29,7 @@ func SpawnMenu() -> void:
 			if (menu != null):
 				add_child(menu)
 				menu.gm = _gamemode
-				menu.z_index = menu.z_index + spawnAmt + _total_spawned_rulesheets
+				menu.z_index = menu.z_index + spawnAmt
 				menu.maximized_menu.z_index = menu.z_index
 				menu.TargetPosition = $MenuTarget.position
 				
