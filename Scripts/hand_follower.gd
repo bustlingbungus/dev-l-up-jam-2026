@@ -3,10 +3,12 @@ class_name HandFollower extends Node2D
 enum HandSprite
 {
 	IDLE,
-	CLOSED
+	CLOSED,
+	ERASER
 }
 
 var CurrSprite : HandSprite = HandSprite.IDLE
+var ErasablesBelow : int = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -24,6 +26,12 @@ func SetSprite(sprite : HandSprite) -> void:
 		HandSprite.IDLE:
 			$IdleHand.visible = true
 			$ClosedHand.visible = false
+			$EraserHand.visible = false
 		HandSprite.CLOSED:
 			$IdleHand.visible = false
 			$ClosedHand.visible = true
+			$EraserHand.visible = false
+		HandSprite.ERASER:
+			$IdleHand.visible = false
+			$ClosedHand.visible = false
+			$EraserHand.visible = true

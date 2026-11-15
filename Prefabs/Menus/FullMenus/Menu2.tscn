@@ -12,6 +12,7 @@ script = ExtResource("1_17lyn")
 metadata/_edit_vertical_guides_ = [-103.0]
 
 [node name="MenuBackground" type="Sprite2D" parent="." unique_id=1504351107]
+z_index = -50
 texture = ExtResource("2_17lyn")
 metadata/_edit_use_anchors_ = true
 

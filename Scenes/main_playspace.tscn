@@ -12,17 +12,23 @@
 [ext_resource type="AudioStream" uid="uid://b4kennaqoxj8t" path="res://Audio Assets/PaperDropSoundEffect.wav" id="10_bknpk"]
 [ext_resource type="Script" uid="uid://d33kbtc5jfvxk" path="res://Scripts/screenfade.gd" id="10_wm63a"]
 [ext_resource type="PackedScene" uid="uid://df1n5ouxqv2qh" path="res://Prefabs/hand_follower.tscn" id="11_ovpdj"]
+[ext_resource type="Texture2D" uid="uid://ci06fw820n4qk" path="res://Art Assets/TrashBin.png" id="13_rccvq"]
+[ext_resource type="Texture2D" uid="uid://csuagjqfexqb" path="res://Art Assets/TopLayerTrashBin.png" id="14_6g7y0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fs538"]
 size = Vector2(219.27272, 216.38318)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l5cqv"]
-size = Vector2(439.319, 655.03345)
+size = Vector2(439.319, 505.7955)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rccvq"]
+size = Vector2(682.2332, 660.82825)
 
 [node name="MainPlayspace" type="Node2D" unique_id=1767193502]
 script = ExtResource("1_2ad61")
 
 [node name="IncomingBin" type="Sprite2D" parent="." unique_id=1697565497]
+z_index = -200
 position = Vector2(200.25, 679.31)
 scale = Vector2(1.8333334, 3.713)
 texture = ExtResource("1_jbq2g")
@@ -38,6 +44,7 @@ scale = Vector2(0.9999998, 1)
 shape = SubResource("RectangleShape2D_fs538")
 
 [node name="OutgoingBin" type="Sprite2D" parent="." unique_id=1128469182]
+z_index = -200
 position = Vector2(1720.905, 679.31)
 scale = Vector2(1.8333334, 3.713)
 texture = ExtResource("1_jbq2g")
@@ -53,6 +60,7 @@ scale = Vector2(0.9999999, 1)
 shape = SubResource("RectangleShape2D_fs538")
 
 [node name="MainWorkspace" type="Sprite2D" parent="." unique_id=1598847436]
+z_index = -200
 position = Vector2(961, 678.5)
 scale = Vector2(1.6411765, 1.2396313)
 texture = ExtResource("3_l5cqv")
@@ -62,9 +70,25 @@ script = ExtResource("2_t1qhy")
 input_pickable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MainWorkspace/Area2D" unique_id=247324264]
-position = Vector2(0.30462646, 2.0166626)
+position = Vector2(0.30462646, 76.63562)
 scale = Vector2(0.9999999, 1.0000001)
 shape = SubResource("RectangleShape2D_l5cqv")
+
+[node name="Background" type="Sprite2D" parent="." unique_id=612596829]
+z_index = -200
+position = Vector2(963.67993, 138.63425)
+scale = Vector2(2.8479998, 0.43430334)
+texture = ExtResource("3_l5cqv")
+script = ExtResource("2_t1qhy")
+workspaceZone = 3
+
+[node name="Area2D" type="Area2D" parent="Background" unique_id=651490692]
+input_pickable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Background/Area2D" unique_id=1917082806]
+position = Vector2(-0.41430664, -0.309021)
+scale = Vector2(0.99999994, 1.0000001)
+shape = SubResource("RectangleShape2D_rccvq")
 
 [node name="MenuSpawner" type="Node2D" parent="." unique_id=1339380053]
 position = Vector2(200.25, 124.915)
@@ -82,6 +106,7 @@ stream = ExtResource("10_bknpk")
 [node name="Successtext" type="RichTextLabel" parent="." unique_id=940936206]
 offset_right = 203.0
 offset_bottom = 40.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
 text = "Successes: 0"
 
 [node name="Failtext" type="RichTextLabel" parent="." unique_id=1377170546]
@@ -89,6 +114,7 @@ offset_left = 1.0
 offset_top = 27.0
 offset_right = 204.0
 offset_bottom = 67.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
 text = "Failures: 0"
 
 [node name="Fade" type="ColorRect" parent="." unique_id=329495511]
@@ -105,3 +131,19 @@ FadeTime = 0.25
 autoFadeOnStart = true
 
 [node name="HandFollower" parent="." unique_id=1480644634 groups=["hand_follower"] instance=ExtResource("11_ovpdj")]
+z_index = 3000
+position = Vector2(-1405, -292)
+
+[node name="Submissionbin" type="Node2D" parent="." unique_id=1818213912]
+position = Vector2(1721, 930)
+scale = Vector2(1.205, 1.205)
+
+[node name="TrashBin" type="Sprite2D" parent="Submissionbin" unique_id=887990491]
+z_index = -1
+scale = Vector2(0.475, 0.475)
+texture = ExtResource("13_rccvq")
+
+[node name="TopLayerTrashBin" type="Sprite2D" parent="Submissionbin" unique_id=836956604]
+z_index = 2000
+scale = Vector2(0.475, 0.475)
+texture = ExtResource("14_6g7y0")

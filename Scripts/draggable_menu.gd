@@ -91,9 +91,23 @@ func _process(delta: float) -> void:
 
 
 func _mouse_enter() -> void:
+	if (_hand != null):
+		if (maximized_menu as RuleSheet == null):
+			_hand.ErasablesBelow += 1
+			if (_hand.CurrSprite == HandFollower.HandSprite.IDLE):
+				if (!visible):
+					_hand.SetSprite(HandFollower.HandSprite.ERASER)
+		
 	_hovered = true
 	
 func _mouse_exit() -> void:
+	if (_hand != null):
+		if (maximized_menu as RuleSheet == null):
+			_hand.ErasablesBelow -= 1
+			if (_hand.ErasablesBelow <= 0):
+				if (_hand.CurrSprite == HandFollower.HandSprite.ERASER):
+					_hand.SetSprite(HandFollower.HandSprite.IDLE)
+		
 	_hovered = false
 
 
@@ -122,25 +136,35 @@ func MakeNotDragged() -> void:
 	_drag = false
 	$PagePickupDrop.play()
 	if (_hand != null):
-		_hand.SetSprite(HandFollower.HandSprite.IDLE)
-	
-	if (_currSpace == WorkspaceArea.WorkspaceZone.INCOMING_BIN):
-				Movestate = MoveState.SPAWNING
-				_spawn_travel_timer = SpawnTravelTime
-				TargetPosition.x = position.x
-	elif (_currSpace == WorkspaceArea.WorkspaceZone.OUTGOING_BIN):
-		TargetPosition.x = position.x
-		var rs = maximized_menu as RuleSheet
-		# normal menu, submit
-		if (rs == null):
-			Movestate = MoveState.SUBMISSION
-			# nice magic number here
-			TargetPosition.y += 500.0
-			_spawn_travel_timer = SubmissionTravelTime
-		# rulesheet, just drop
+		if (_hand.ErasablesBelow <= 0):
+			_hand.SetSprite(HandFollower.HandSprite.IDLE)
 		else:
+			_hand.SetSprite(HandFollower.HandSprite.ERASER)
+	
+	match (_currSpace):
+		WorkspaceArea.WorkspaceZone.INCOMING_BIN:
 			Movestate = MoveState.SPAWNING
 			_spawn_travel_timer = SpawnTravelTime
+			TargetPosition.x = position.x
+		
+		WorkspaceArea.WorkspaceZone.OUTGOING_BIN:
+			TargetPosition.x = position.x
+			var rs = maximized_menu as RuleSheet
+			# normal menu, submit
+			if (rs == null):
+				Movestate = MoveState.SUBMISSION
+				# nice magic number here
+				TargetPosition.y += 500.0
+				_spawn_travel_timer = SubmissionTravelTime
+			# rulesheet, just drop
+			else:
+				Movestate = MoveState.SPAWNING
+				_spawn_travel_timer = SpawnTravelTime
+		
+		WorkspaceArea.WorkspaceZone.BACKGROUND:
+			Movestate = MoveState.SPAWNING
+			_spawn_travel_timer = SpawnTravelTime
+			TargetPosition.x = position.x
 
 
 func _area_entered(area : Area2D) -> void:

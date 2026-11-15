@@ -8,6 +8,7 @@
 size = Vector2(350, 552)
 
 [node name="Rulesheet" type="Sprite2D" unique_id=784805275 groups=["Rulesheet"]]
+z_index = -50
 texture = ExtResource("1_ml6fe")
 script = ExtResource("2_8alrd")
 
