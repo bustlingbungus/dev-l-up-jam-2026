@@ -11,6 +11,8 @@ var _mouse_disp : Vector2
 
 var gm : Gamemode = null
 
+var _hand : HandFollower = null
+
 
 enum MoveState
 {
@@ -35,6 +37,8 @@ signal SubmitMenu(menu: MenuTemplate)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	_hand = get_tree().get_first_node_in_group("hand_follower")
+	
 	if (MaximizedMenu != null):
 		var instance = MaximizedMenu.instantiate()
 		if (instance != null):
@@ -59,6 +63,9 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	if (_hand == null):
+		_hand = get_tree().get_first_node_in_group("hand_follower")
+	
 	_handle_mouse_input()
 	
 	match (Movestate):
@@ -102,13 +109,20 @@ func _handle_mouse_input() -> void:
 
 
 func MakeDragged() -> void:
+	$PagePickupDrop.play()
 	Movestate = MoveState.NORMAL
 	_mouse_disp = position - get_global_mouse_position()
 	_drag = true
+	
+	if (_hand != null):
+		_hand.SetSprite(HandFollower.HandSprite.CLOSED)
 
 
 func MakeNotDragged() -> void:
 	_drag = false
+	$PagePickupDrop.play()
+	if (_hand != null):
+		_hand.SetSprite(HandFollower.HandSprite.IDLE)
 	
 	if (_currSpace == WorkspaceArea.WorkspaceZone.INCOMING_BIN):
 				Movestate = MoveState.SPAWNING

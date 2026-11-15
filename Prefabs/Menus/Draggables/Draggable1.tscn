@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://duq0vdnorbb3g" path="res://Art Assets/Placeholder/4ov34bcynkh21.jpg" id="1_6m8v6"]
 [ext_resource type="Script" uid="uid://d1rf8jwv4350v" path="res://Scripts/draggable_menu.gd" id="2_mb633"]
 [ext_resource type="PackedScene" uid="uid://bes82oyjsfklw" path="res://Prefabs/Menus/FullMenus/Menu1.tscn" id="3_o4xj1"]
+[ext_resource type="AudioStream" uid="uid://cgnbwq7sa1lu3" path="res://Audio Assets/PagePickupDrop.wav" id="4_c4f82"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1in3n"]
 size = Vector2(749, 754)
@@ -14,6 +15,9 @@ texture = ExtResource("1_6m8v6")
 script = ExtResource("2_mb633")
 MaximizedMenu = ExtResource("3_o4xj1")
 SubmissionTravelTime = 1.5
+
+[node name="PagePickupDrop" type="AudioStreamPlayer" parent="." unique_id=16738493]
+stream = ExtResource("4_c4f82")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1016613155]
 

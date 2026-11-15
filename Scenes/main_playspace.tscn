@@ -9,6 +9,9 @@
 [ext_resource type="PackedScene" uid="uid://dsft7fotlpstq" path="res://Prefabs/Menus/Draggables/Draggable2.tscn" id="7_ixtrt"]
 [ext_resource type="PackedScene" uid="uid://cy8771lqnyykn" path="res://Prefabs/Menus/Draggables/DraggableRulesheet1.tscn" id="8_ly0qe"]
 [ext_resource type="PackedScene" uid="uid://d4irb4yfub0rs" path="res://Prefabs/Menus/Draggables/DraggableRulesheet2.tscn" id="9_ly0qe"]
+[ext_resource type="AudioStream" uid="uid://b4kennaqoxj8t" path="res://Audio Assets/PaperDropSoundEffect.wav" id="10_bknpk"]
+[ext_resource type="Script" uid="uid://d33kbtc5jfvxk" path="res://Scripts/screenfade.gd" id="10_wm63a"]
+[ext_resource type="PackedScene" uid="uid://df1n5ouxqv2qh" path="res://Prefabs/hand_follower.tscn" id="11_ovpdj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fs538"]
 size = Vector2(219.27272, 216.38318)
@@ -73,6 +76,9 @@ spawnAmt = 2
 [node name="MenuTarget" type="Node2D" parent="MenuSpawner" unique_id=1172741195]
 position = Vector2(0, 761.27)
 
+[node name="PaperDropSoundEffect" type="AudioStreamPlayer" parent="MenuSpawner" unique_id=2043159537]
+stream = ExtResource("10_bknpk")
+
 [node name="Successtext" type="RichTextLabel" parent="." unique_id=940936206]
 offset_right = 203.0
 offset_bottom = 40.0
@@ -84,3 +90,18 @@ offset_top = 27.0
 offset_right = 204.0
 offset_bottom = 67.0
 text = "Failures: 0"
+
+[node name="Fade" type="ColorRect" parent="." unique_id=329495511]
+visible = false
+z_index = 3000
+offset_right = 1927.0
+offset_bottom = 1085.0
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+script = ExtResource("10_wm63a")
+StartHoldTime = 0.1
+EndHoldTime = 0.0
+FadeTime = 0.25
+autoFadeOnStart = true
+
+[node name="HandFollower" parent="." unique_id=1480644634 groups=["hand_follower"] instance=ExtResource("11_ovpdj")]

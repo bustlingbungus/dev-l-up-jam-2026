@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://d08tx6uhaxuy1"]
+
+[ext_resource type="Script" uid="uid://70qtaexi8dtd" path="res://Scripts/titlescreen.gd" id="1_que75"]
+[ext_resource type="Script" uid="uid://d33kbtc5jfvxk" path="res://Scripts/screenfade.gd" id="3_pwk6s"]
+[ext_resource type="PackedScene" uid="uid://br5p21542pvkm" path="res://Scenes/main_playspace.tscn" id="4_yvq8y"]
+
+[node name="Titlescreen" type="Control" unique_id=965093756]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_que75")
+
+[node name="Fade" type="ColorRect" parent="." unique_id=1019770413]
+visible = false
+z_index = 3000
+layout_mode = 0
+offset_right = 1927.0
+offset_bottom = 1085.0
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+script = ExtResource("3_pwk6s")
+StartHoldTime = 0.0
+EndHoldTime = 0.1
+FadeTime = 0.25
+FadeOutSceneChange = ExtResource("4_yvq8y")
+InvertFade = true
+
+[node name="Button" type="Button" parent="." unique_id=851801130]
+layout_mode = 0
+offset_left = 865.0
+offset_top = 250.0
+offset_right = 1053.0
+offset_bottom = 381.0
+text = "Play"
+
+[connection signal="pressed" from="Button" to="." method="PlayButton"]

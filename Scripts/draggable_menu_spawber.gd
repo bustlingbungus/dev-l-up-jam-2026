@@ -47,6 +47,8 @@ func SpawnMenu() -> void:
 				menu.TargetPosition = $MenuTarget.position
 				menu.SubmitMenu.connect(SubmitMenu)
 	
+	$PaperDropSoundEffect.play()
+	
 
 func SubmitMenu(menu : MenuTemplate) -> void:
 	_gamemode.SubmitMenu(menu)

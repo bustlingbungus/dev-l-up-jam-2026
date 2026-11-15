@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://df1n5ouxqv2qh"]
+
+[ext_resource type="Texture2D" uid="uid://52cgog74bk7i" path="res://Art Assets/Closed-hand.png" id="1_aasbw"]
+[ext_resource type="Texture2D" uid="uid://do3x1fo8f7o55" path="res://Art Assets/hand.png" id="1_v3t1f"]
+[ext_resource type="Script" uid="uid://b1skmesfp055m" path="res://Scripts/hand_follower.gd" id="1_xu1e4"]
+
+[node name="HandFollower" type="Node2D" unique_id=1480644634]
+script = ExtResource("1_xu1e4")
+
+[node name="IdleHand" type="Sprite2D" parent="." unique_id=604391507]
+position = Vector2(214, 356)
+texture = ExtResource("1_v3t1f")
+
+[node name="ClosedHand" type="Sprite2D" parent="." unique_id=706413653]
+visible = false
+position = Vector2(214, 356)
+texture = ExtResource("1_aasbw")

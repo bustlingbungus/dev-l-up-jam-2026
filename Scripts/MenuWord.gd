@@ -37,3 +37,4 @@ func _mouse_exit() -> void:
 
 func _onTrigger() -> void:
 	visible = false
+	$EraseSound.play()

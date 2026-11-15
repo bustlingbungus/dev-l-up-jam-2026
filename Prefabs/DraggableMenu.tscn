@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://duq0vdnorbb3g" path="res://Art Assets/Placeholder/4ov34bcynkh21.jpg" id="1_n8y0d"]
 [ext_resource type="Script" uid="uid://d1rf8jwv4350v" path="res://Scripts/draggable_menu.gd" id="2_72yv3"]
 [ext_resource type="PackedScene" uid="uid://c7gfjtkgc11y3" path="res://Prefabs/MenuTemplate.tscn" id="3_sghar"]
+[ext_resource type="AudioStream" uid="uid://cgnbwq7sa1lu3" path="res://Audio Assets/PagePickupDrop.wav" id="4_h2txf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1in3n"]
 size = Vector2(749, 754)
@@ -20,3 +21,6 @@ SubmissionTravelTime = 1.5
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1858935037]
 position = Vector2(-0.5, 1)
 shape = SubResource("RectangleShape2D_1in3n")
+
+[node name="PagePickupDrop" type="AudioStreamPlayer" parent="." unique_id=711228191]
+stream = ExtResource("4_h2txf")

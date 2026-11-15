@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://ddo4wpxflvhop" path="res://Art Assets/Placeholder/f1racer.png" id="1_sroa4"]
 [ext_resource type="Script" uid="uid://d1rf8jwv4350v" path="res://Scripts/draggable_menu.gd" id="2_py435"]
 [ext_resource type="PackedScene" uid="uid://dtvv4y1gu51wy" path="res://Prefabs/Menus/FullMenus/Menu2.tscn" id="3_sroa4"]
+[ext_resource type="AudioStream" uid="uid://cgnbwq7sa1lu3" path="res://Audio Assets/PagePickupDrop.wav" id="4_py435"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1in3n"]
 size = Vector2(510.44775, 504.4776)
@@ -20,3 +21,6 @@ SubmissionTravelTime = 1.5
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1858935037]
 position = Vector2(-1.4925373, -1.4925373)
 shape = SubResource("RectangleShape2D_1in3n")
+
+[node name="PagePickupDrop" type="AudioStreamPlayer" parent="." unique_id=114307815]
+stream = ExtResource("4_py435")

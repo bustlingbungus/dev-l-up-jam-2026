@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://dmnnmjpmf81gd"]
 
 [ext_resource type="Script" uid="uid://vohuvennxm33" path="res://Scripts/randomized_word.gd" id="1_lotee"]
+[ext_resource type="AudioStream" uid="uid://cf3rcbimoaev1" path="res://Audio Assets/EraseSound.wav" id="2_aauuw"]
 
 [node name="RandomizedWord" type="RichTextLabel" unique_id=63076526]
 offset_right = 204.0
@@ -8,3 +9,6 @@ offset_bottom = 27.0
 text = "Randomized Word"
 script = ExtResource("1_lotee")
 MenuFile = "res://JSON/menu.json"
+
+[node name="EraseSound" type="AudioStreamPlayer" parent="." unique_id=754344580]
+stream = ExtResource("2_aauuw")
