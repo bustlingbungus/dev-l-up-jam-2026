@@ -1,11 +1,13 @@
 [gd_scene format=3 uid="uid://i1d6wtq1ggey"]
 
 [ext_resource type="Script" uid="uid://vw0bitw7kfw" path="res://Scripts/MenuWord.gd" id="1_0qpec"]
+[ext_resource type="FontFile" uid="uid://ixsiem7or3k8" path="res://Art Assets/Fonts/Orange Lemonade.otf" id="1_twry3"]
 [ext_resource type="AudioStream" uid="uid://cf3rcbimoaev1" path="res://Audio Assets/EraseSound.wav" id="2_6vsm4"]
 
 [node name="MenuWord" type="RichTextLabel" unique_id=63076526]
 offset_right = 50.0
 offset_bottom = 25.0
+theme_override_fonts/normal_font = ExtResource("1_twry3")
 text = "Lorem"
 script = ExtResource("1_0qpec")
 

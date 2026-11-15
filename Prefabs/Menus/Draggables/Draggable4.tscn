@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://dnbm6low1wog2"]
+
+[ext_resource type="Texture2D" uid="uid://cn2fqdf5jwmaq" path="res://Art Assets/Menus/geeen_menu.png" id="1_h5jqf"]
+[ext_resource type="Script" uid="uid://d1rf8jwv4350v" path="res://Scripts/draggable_menu.gd" id="2_gm3co"]
+[ext_resource type="PackedScene" uid="uid://dx7xyan5hqjaq" path="res://Prefabs/Menus/FullMenus/Menu4.tscn" id="3_gm3co"]
+[ext_resource type="AudioStream" uid="uid://cgnbwq7sa1lu3" path="res://Audio Assets/PagePickupDrop.wav" id="4_podn8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1in3n"]
+size = Vector2(516.41785, 710.44775)
+
+[node name="DraggableMenu" type="Sprite2D" unique_id=1353970121]
+process_mode = 3
+scale = Vector2(0.335, 0.335)
+texture = ExtResource("1_h5jqf")
+script = ExtResource("2_gm3co")
+MaximizedMenu = ExtResource("3_gm3co")
+SubmissionTravelTime = 1.5
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1016613155]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1858935037]
+position = Vector2(1.4925373, 5.693578e-06)
+shape = SubResource("RectangleShape2D_1in3n")
+
+[node name="PagePickupDrop" type="AudioStreamPlayer" parent="." unique_id=114307815]
+stream = ExtResource("4_podn8")

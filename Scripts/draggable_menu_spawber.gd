@@ -31,6 +31,7 @@ func SpawnMenu() -> void:
 				menu.gm = _gamemode
 				menu.z_index = menu.z_index + spawnAmt
 				menu.maximized_menu.z_index = menu.z_index
+				menu.rotate(randf_range(0, 2 * PI))
 				menu.TargetPosition = $MenuTarget.position
 				
 				
@@ -46,6 +47,7 @@ func SpawnMenu() -> void:
 				menu.z_index = menu.z_index + i
 				menu.maximized_menu.z_index = menu.z_index
 				menu.TargetPosition = $MenuTarget.position
+				menu.rotate(randf_range(0, 2 * PI))
 				menu.SubmitMenu.connect(SubmitMenu)
 	
 	$PaperDropSoundEffect.play()

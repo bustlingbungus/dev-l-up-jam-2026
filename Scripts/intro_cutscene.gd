@@ -15,10 +15,16 @@ func _ready() -> void:
 	$panels.get_child(0).visible = true
 	for i in range(1, $panels.get_child_count()):
 		$panels.get_child(i).visible = false
+	
+	if (Global.is_first_game):
+		$SkipText.visible = false
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	if (Input.is_action_just_pressed("ui_cancel") && !Global.is_first_game):
+		$FadeOut.StartFade()
+		
 	if (Input.is_action_just_pressed("ui_accept")):
 		ProceedPanel() 
 	if (_fading):

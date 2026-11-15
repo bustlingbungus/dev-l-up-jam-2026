@@ -22,6 +22,8 @@ func _process(delta: float) -> void:
 
 
 func SubmitMenu(menu : MenuTemplate) -> void:
+	if ($"Tutorial Indicator".visible):
+		$"Tutorial Indicator".visible = false
 	# success condition
 	if (menu.TurkeysDetected == menu.TotalTurkeys && menu.FalseErases == 0):
 		SuccessfulMenus += 1
@@ -80,6 +82,7 @@ func EndGame() -> void:
 		if (drag != null):
 			drag.draggable == false
 		child.call_deferred("reparent", self)
+	Global.highscore = max(Global.highscore, SuccessfulMenus)
 	$MenuSpawner.call_deferred("queue_free")
 	$HandFollower.queue_free()
 	$ColorRect2/RunTimer.Active = false

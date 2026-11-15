@@ -1,0 +1,163 @@
+[gd_scene format=3 uid="uid://dx7xyan5hqjaq"]
+
+[ext_resource type="Script" uid="uid://r7vrceq5wg6q" path="res://Scripts/menu_template.gd" id="1_aq3w7"]
+[ext_resource type="Texture2D" uid="uid://62f1jjmmawox" path="res://Art Assets/Menus/geeen_menu_open.png" id="2_aq3w7"]
+[ext_resource type="PackedScene" uid="uid://dmnnmjpmf81gd" path="res://Prefabs/Words/RandomizedWord.tscn" id="3_8e4xk"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_75itx"]
+size = Vector2(1001.724, 472.4137)
+
+[node name="Menu" type="Node2D" unique_id=686237547]
+z_index = -50
+scale = Vector2(0.725, 0.725)
+script = ExtResource("1_aq3w7")
+metadata/_edit_vertical_guides_ = [-103.0]
+
+[node name="MenuBackground" type="Sprite2D" parent="." unique_id=1504351107]
+z_index = -50
+scale = Vector2(0.665, 0.665)
+texture = ExtResource("2_aq3w7")
+metadata/_edit_use_anchors_ = true
+
+[node name="text" type="Node2D" parent="MenuBackground" unique_id=1299245288]
+
+[node name="randomized" type="Node2D" parent="MenuBackground/text" unique_id=1108023106]
+
+[node name="RandomizedWord" parent="MenuBackground/text/randomized" unique_id=965452560 instance=ExtResource("3_8e4xk")]
+offset_left = -122.07671
+offset_top = -154.07568
+offset_right = 204.92328
+offset_bottom = -102.07568
+mouse_filter = 1
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 49
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="RandomizedWord2" parent="MenuBackground/text/randomized" unique_id=63076526 instance=ExtResource("3_8e4xk")]
+offset_left = -122.07668
+offset_top = -69.03551
+offset_right = 204.92331
+offset_bottom = -17.035507
+mouse_filter = 1
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 49
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="RandomizedWord3" parent="MenuBackground/text/randomized" unique_id=1208388921 instance=ExtResource("3_8e4xk")]
+offset_left = -123.11382
+offset_top = 26.375425
+offset_right = 203.88617
+offset_bottom = 78.37543
+mouse_filter = 1
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 49
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="RandomizedWord4" parent="MenuBackground/text/randomized" unique_id=921962433 instance=ExtResource("3_8e4xk")]
+offset_left = -128.29913
+offset_top = 117.63806
+offset_right = 198.70087
+offset_bottom = 169.63806
+mouse_filter = 1
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 49
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="RandomizedWord6" parent="MenuBackground/text/randomized" unique_id=1660731947 instance=ExtResource("3_8e4xk")]
+offset_left = -661.6541
+offset_top = -155.56131
+offset_right = -334.6541
+offset_bottom = -103.56131
+mouse_filter = 1
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 49
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="RandomizedWord7" parent="MenuBackground/text/randomized" unique_id=68927190 instance=ExtResource("3_8e4xk")]
+offset_left = -661.65405
+offset_top = -70.521126
+offset_right = -334.65405
+offset_bottom = -18.521126
+mouse_filter = 1
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 49
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="RandomizedWord8" parent="MenuBackground/text/randomized" unique_id=600526256 instance=ExtResource("3_8e4xk")]
+offset_left = -662.6912
+offset_top = 24.88981
+offset_right = -335.69122
+offset_bottom = 76.88981
+mouse_filter = 1
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 49
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="RandomizedWord9" parent="MenuBackground/text/randomized" unique_id=1767081467 instance=ExtResource("3_8e4xk")]
+offset_left = -667.8765
+offset_top = 116.152435
+offset_right = -340.87653
+offset_bottom = 168.15244
+mouse_filter = 1
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 49
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="RandomizedWord11" parent="MenuBackground/text/randomized" unique_id=2047801819 instance=ExtResource("3_8e4xk")]
+offset_left = 336.53107
+offset_top = -152.96861
+offset_right = 663.53107
+offset_bottom = -100.96861
+mouse_filter = 1
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 49
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="RandomizedWord12" parent="MenuBackground/text/randomized" unique_id=556862279 instance=ExtResource("3_8e4xk")]
+offset_left = 336.5311
+offset_top = -67.92844
+offset_right = 663.53107
+offset_bottom = -15.928436
+mouse_filter = 1
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 49
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="RandomizedWord13" parent="MenuBackground/text/randomized" unique_id=1798078144 instance=ExtResource("3_8e4xk")]
+offset_left = 335.49396
+offset_top = 27.4825
+offset_right = 662.49396
+offset_bottom = 79.4825
+mouse_filter = 1
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 49
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="RandomizedWord14" parent="MenuBackground/text/randomized" unique_id=472819085 instance=ExtResource("3_8e4xk")]
+offset_left = 330.30862
+offset_top = 118.74513
+offset_right = 657.30865
+offset_bottom = 170.74512
+mouse_filter = 1
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 49
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Area2D" type="Area2D" parent="." unique_id=864369663]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1417624882]
+position = Vector2(-0.86210865, -3.288533e-06)
+scale = Vector2(1.0000004, 1.0000004)
+shape = SubResource("RectangleShape2D_75itx")

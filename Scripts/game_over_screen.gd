@@ -12,6 +12,7 @@ func _ready() -> void:
 	visible = true
 	$ColorRect2.visible = false
 	$Button.visible = false
+	$RichTextLabel.visible = false
 	$Button.pressed.connect(ExitToMenu)
 	modulate.a = 0.0
 
@@ -20,9 +21,13 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if (_active):
 		if (_timer > 0.0):
-			var alp = lerpf(1.0, 0.0, _timer / FadeTime)
-			modulate.a = alp
-			_timer -= delta
+			if (!Global.is_first_game && Input.is_action_just_pressed("ui_accept")):
+				modulate.a = 1.0
+				OnFadeComplete()
+			else:
+				var alp = lerpf(1.0, 0.0, _timer / FadeTime)
+				modulate.a = alp
+				_timer -= delta
 		else:
 			modulate.a = 1.0
 			OnFadeComplete()
@@ -31,15 +36,20 @@ func _process(delta: float) -> void:
 func FadeIn() -> void:
 	_active = true
 	_timer = FadeTime
+	$Gobble.play()
+	$New4202611151442.play()
 
 
 func OnFadeComplete() -> void:
 	# reveal elements
+	_active = false
 	$ColorRect2.visible = true
 	$Button.visible = true
+	$RichTextLabel.visible = true
 
 
 func ExitToMenu() -> void:
+	Global.is_first_game = false
 	fadeCover.EndHoldTime = fadeCover.StartHoldTime
 	fadeCover.StartHoldTime = 0.0
 	fadeCover.InvertFade = !fadeCover.InvertFade

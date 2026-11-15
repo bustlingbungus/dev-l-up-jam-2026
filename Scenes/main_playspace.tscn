@@ -6,9 +6,13 @@
 [ext_resource type="Script" uid="uid://dye6pi61bam21" path="res://Scripts/draggable_menu_spawber.gd" id="5_ylxo0"]
 [ext_resource type="PackedScene" uid="uid://drs3kn7saje1p" path="res://Prefabs/Menus/Draggables/Draggable1.tscn" id="6_2ad61"]
 [ext_resource type="PackedScene" uid="uid://dsft7fotlpstq" path="res://Prefabs/Menus/Draggables/Draggable2.tscn" id="7_ixtrt"]
+[ext_resource type="PackedScene" uid="uid://dmr8xr5i3jjp5" path="res://Prefabs/Menus/Draggables/Draggable3.tscn" id="7_p586n"]
+[ext_resource type="PackedScene" uid="uid://dnbm6low1wog2" path="res://Prefabs/Menus/Draggables/Draggable4.tscn" id="8_f8jaf"]
 [ext_resource type="PackedScene" uid="uid://cy8771lqnyykn" path="res://Prefabs/Menus/Draggables/DraggableRulesheet1.tscn" id="8_ly0qe"]
+[ext_resource type="PackedScene" uid="uid://d28e3q2x7cdej" path="res://Prefabs/Menus/Draggables/Draggable5.tscn" id="9_383hq"]
 [ext_resource type="PackedScene" uid="uid://d4irb4yfub0rs" path="res://Prefabs/Menus/Draggables/DraggableRulesheet2.tscn" id="9_ly0qe"]
 [ext_resource type="AudioStream" uid="uid://b4kennaqoxj8t" path="res://Audio Assets/PaperDropSoundEffect.wav" id="10_bknpk"]
+[ext_resource type="PackedScene" uid="uid://jaiiq1wqj2m5" path="res://Prefabs/Menus/Draggables/Draggable6.tscn" id="10_f8jaf"]
 [ext_resource type="Script" uid="uid://d33kbtc5jfvxk" path="res://Scripts/screenfade.gd" id="10_wm63a"]
 [ext_resource type="PackedScene" uid="uid://df1n5ouxqv2qh" path="res://Prefabs/hand_follower.tscn" id="11_ovpdj"]
 [ext_resource type="Texture2D" uid="uid://ci06fw820n4qk" path="res://Art Assets/TrashBin.png" id="13_rccvq"]
@@ -18,15 +22,23 @@
 [ext_resource type="Texture2D" uid="uid://duve7jr16gmxm" path="res://Art Assets/Game_Over_-_Fall_Gamejam.png" id="16_apqes"]
 [ext_resource type="Script" uid="uid://blr7g7ltkg7du" path="res://Scripts/game_over_screen.gd" id="17_uj7a5"]
 [ext_resource type="AudioStream" uid="uid://dw3cl7foynx4d" path="res://Audio Assets/Music/rewriting history 2026-11-15 1351.mp3" id="18_bntb3"]
+[ext_resource type="AudioStream" uid="uid://brlx2oj0bo7q1" path="res://Audio Assets/Music/New 4 2026-11-15 1442.mp3" id="22_5umli"]
+[ext_resource type="AudioStream" uid="uid://c3drdsmhb3qlg" path="res://Audio Assets/Music/New 2 2026-11-15 1617.mp3" id="22_383hq"]
+[ext_resource type="Texture2D" uid="uid://bqieili0u8677" path="res://Art Assets/Incoming_Bin.png" id="25_3isrl"]
+[ext_resource type="FontFile" uid="uid://ixsiem7or3k8" path="res://Art Assets/Fonts/Orange Lemonade.otf" id="25_puycc"]
+[ext_resource type="Texture2D" uid="uid://q4848mes3l8j" path="res://Art Assets/TopLayer_Incoming_Bin.png" id="26_puycc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fs538"]
 size = Vector2(219.27272, 216.38318)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bntb3"]
+size = Vector2(226.36371, 296.52573)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l5cqv"]
-size = Vector2(439.319, 505.7955)
+size = Vector2(561.1829, 587.27136)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rccvq"]
-size = Vector2(682.2332, 660.82825)
+size = Vector2(496.1377, 660.82825)
 
 [node name="MainPlayspace" type="Node2D" unique_id=1767193502]
 script = ExtResource("1_2ad61")
@@ -58,9 +70,9 @@ workspaceZone = 2
 input_pickable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="OutgoingBin/Area2D" unique_id=1084421699]
-position = Vector2(0.40909576, 0.43180847)
-scale = Vector2(0.9999999, 1)
-shape = SubResource("RectangleShape2D_fs538")
+position = Vector2(-6.7664795, -37.11554)
+scale = Vector2(0.9999995, 1)
+shape = SubResource("RectangleShape2D_bntb3")
 
 [node name="MainWorkspace" type="Sprite2D" parent="." unique_id=1598847436]
 z_index = -200
@@ -72,7 +84,7 @@ script = ExtResource("2_t1qhy")
 input_pickable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MainWorkspace/Area2D" unique_id=247324264]
-position = Vector2(0.30462646, 76.63562)
+position = Vector2(-16.147034, 35.897705)
 scale = Vector2(0.9999999, 1.0000001)
 shape = SubResource("RectangleShape2D_l5cqv")
 
@@ -87,19 +99,19 @@ workspaceZone = 3
 input_pickable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Background/Area2D" unique_id=1917082806]
-position = Vector2(-0.41430664, -0.309021)
+position = Vector2(-93.46208, -0.309021)
 scale = Vector2(0.99999994, 1.0000001)
 shape = SubResource("RectangleShape2D_rccvq")
 
 [node name="MenuSpawner" type="Node2D" parent="." unique_id=1339380053]
-position = Vector2(200.25, 124.915)
+position = Vector2(200.25, 371.83)
 script = ExtResource("5_ylxo0")
-DraggableMenus = Array[PackedScene]([ExtResource("6_2ad61"), ExtResource("7_ixtrt")])
+DraggableMenus = Array[PackedScene]([ExtResource("6_2ad61"), ExtResource("7_ixtrt"), ExtResource("7_p586n"), ExtResource("8_f8jaf"), ExtResource("9_383hq"), ExtResource("10_f8jaf")])
 DraggableRulesheets = Array[PackedScene]([ExtResource("8_ly0qe"), ExtResource("9_ly0qe")])
 spawnAmt = 2
 
 [node name="MenuTarget" type="Node2D" parent="MenuSpawner" unique_id=1172741195]
-position = Vector2(0, 761.27)
+position = Vector2(-0.25, 441.38)
 
 [node name="PaperDropSoundEffect" type="AudioStreamPlayer" parent="MenuSpawner" unique_id=2043159537]
 stream = ExtResource("10_bknpk")
@@ -218,6 +230,13 @@ FadeTime = 15.0
 fadeCover = NodePath("../Fade")
 MenuScene = "res://Scenes/Titlescreen.tscn"
 
+[node name="New4202611151442" type="AudioStreamPlayer" parent="GameOverFallGamejam" unique_id=357793206]
+stream = ExtResource("22_5umli")
+parameters/looping = true
+
+[node name="Gobble" type="AudioStreamPlayer" parent="GameOverFallGamejam" unique_id=340047677]
+stream = ExtResource("22_383hq")
+
 [node name="ColorRect2" type="ColorRect" parent="GameOverFallGamejam" unique_id=491169449]
 offset_left = -942.0
 offset_top = -213.0
@@ -261,3 +280,27 @@ vertical_alignment = 1
 stream = ExtResource("18_bntb3")
 autoplay = true
 parameters/looping = true
+
+[node name="Tutorial Indicator" type="RichTextLabel" parent="." unique_id=1417210776]
+offset_left = 1577.0
+offset_top = 486.0
+offset_right = 1892.0
+offset_bottom = 840.0
+theme_override_fonts/normal_font = ExtResource("25_puycc")
+theme_override_font_sizes/normal_font_size = 78
+text = "Drop Menus Here
+|
+V"
+horizontal_alignment = 1
+
+[node name="Mailbox" type="Node2D" parent="." unique_id=844971042]
+position = Vector2(205, 250)
+scale = Vector2(0.64, 0.64)
+
+[node name="IncomingBin2" type="Sprite2D" parent="Mailbox" unique_id=1448894062]
+z_index = -150
+texture = ExtResource("25_3isrl")
+
+[node name="TopLayerIncomingBin" type="Sprite2D" parent="Mailbox" unique_id=1298999291]
+z_index = 2000
+texture = ExtResource("26_puycc")

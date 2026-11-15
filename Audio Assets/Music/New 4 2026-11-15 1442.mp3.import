@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://brlx2oj0bo7q1"
+path="res://.godot/imported/New 4 2026-11-15 1442.mp3-1944b94711c7b9f5735a290338853923.mp3str"
+
+[deps]
+
+source_file="res://Audio Assets/Music/New 4 2026-11-15 1442.mp3"
+dest_files=["res://.godot/imported/New 4 2026-11-15 1442.mp3-1944b94711c7b9f5735a290338853923.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

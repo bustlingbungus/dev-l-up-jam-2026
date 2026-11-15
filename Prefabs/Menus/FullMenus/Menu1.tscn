@@ -9,6 +9,7 @@ size = Vector2(654, 450)
 
 [node name="Menu" type="Node2D" unique_id=686237547]
 z_index = -50
+scale = Vector2(0.485, 0.485)
 script = ExtResource("1_lnh6j")
 metadata/_edit_vertical_guides_ = [-103.0]
 
@@ -28,7 +29,7 @@ offset_right = 139.0
 offset_bottom = -21.0
 mouse_filter = 1
 theme_override_colors/default_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/normal_font_size = 33
+theme_override_font_sizes/normal_font_size = 51
 
 [node name="RandomizedWord2" parent="MenuBackground/text/randomized" unique_id=858526719 instance=ExtResource("3_wks8g")]
 offset_left = -198.0
@@ -37,7 +38,7 @@ offset_right = 156.0
 offset_bottom = 97.0
 mouse_filter = 1
 theme_override_colors/default_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/normal_font_size = 32
+theme_override_font_sizes/normal_font_size = 51
 
 [node name="RandomizedWord3" parent="MenuBackground/text/randomized" unique_id=63076526 instance=ExtResource("3_wks8g")]
 offset_left = -204.0
@@ -46,7 +47,7 @@ offset_right = 150.0
 offset_bottom = 174.0
 mouse_filter = 1
 theme_override_colors/default_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/normal_font_size = 32
+theme_override_font_sizes/normal_font_size = 51
 
 [node name="Area2D" type="Area2D" parent="." unique_id=864369663]
 

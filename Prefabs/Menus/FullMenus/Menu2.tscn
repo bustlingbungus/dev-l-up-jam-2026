@@ -9,6 +9,7 @@ size = Vector2(453, 652)
 
 [node name="Menu" type="Node2D" unique_id=686237547]
 z_index = -50
+scale = Vector2(0.58, 0.58)
 script = ExtResource("1_17lyn")
 metadata/_edit_vertical_guides_ = [-103.0]
 
@@ -22,58 +23,40 @@ metadata/_edit_use_anchors_ = true
 [node name="randomized" type="Node2D" parent="MenuBackground/text" unique_id=1108023106]
 
 [node name="RandomizedWord" parent="MenuBackground/text/randomized" unique_id=965452560 instance=ExtResource("3_rx8aa")]
-offset_left = -118.0
-offset_top = -110.0
-offset_right = 209.0
-offset_bottom = -58.0
+offset_left = -117.24139
+offset_top = -141.37932
+offset_right = 209.7586
+offset_bottom = -89.37932
 mouse_filter = 1
 theme_override_colors/default_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/normal_font_size = 24
+theme_override_font_sizes/normal_font_size = 46
 
 [node name="RandomizedWord2" parent="MenuBackground/text/randomized" unique_id=63076526 instance=ExtResource("3_rx8aa")]
-offset_left = -188.0
-offset_top = -62.0
-offset_right = 139.0
-offset_bottom = -10.0
+offset_left = -187.93105
+offset_top = -75.862076
+offset_right = 139.06895
+offset_bottom = -23.862076
 mouse_filter = 1
 theme_override_colors/default_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/normal_font_size = 24
-
-[node name="RandomizedWord3" parent="MenuBackground/text/randomized" unique_id=1602467825 instance=ExtResource("3_rx8aa")]
-offset_left = -23.0
-offset_top = -30.0
-offset_right = 304.0
-offset_bottom = 22.0
-mouse_filter = 1
-theme_override_colors/default_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/normal_font_size = 24
-
-[node name="RandomizedWord4" parent="MenuBackground/text/randomized" unique_id=1272563284 instance=ExtResource("3_rx8aa")]
-offset_left = -201.0
-offset_top = 6.0
-offset_right = 126.0
-offset_bottom = 58.0
-mouse_filter = 1
-theme_override_colors/default_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/normal_font_size = 24
+theme_override_font_sizes/normal_font_size = 46
 
 [node name="RandomizedWord5" parent="MenuBackground/text/randomized" unique_id=957194694 instance=ExtResource("3_rx8aa")]
-offset_left = -71.0
-offset_top = 41.0
-offset_right = 256.0
-offset_bottom = 93.0
+offset_left = -87.93104
+offset_top = -18.96552
+offset_right = 239.06897
+offset_bottom = 33.034477
 mouse_filter = 1
 theme_override_colors/default_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/normal_font_size = 24
+theme_override_font_sizes/normal_font_size = 46
 
 [node name="RandomizedWord6" parent="MenuBackground/text/randomized" unique_id=1732338131 instance=ExtResource("3_rx8aa")]
-offset_left = -174.0
-offset_top = 86.0
-offset_right = 153.0
-offset_bottom = 138.0
+offset_left = -208.6207
+offset_top = 43.103447
+offset_right = 118.3793
+offset_bottom = 95.10345
 mouse_filter = 1
 theme_override_colors/default_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/normal_font_size = 24
+theme_override_font_sizes/normal_font_size = 46
 
 [node name="Area2D" type="Area2D" parent="." unique_id=864369663]
 

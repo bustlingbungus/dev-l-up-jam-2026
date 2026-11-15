@@ -1,11 +1,13 @@
 [gd_scene format=3 uid="uid://dmnnmjpmf81gd"]
 
+[ext_resource type="FontFile" uid="uid://ixsiem7or3k8" path="res://Art Assets/Fonts/Orange Lemonade.otf" id="1_kvjrv"]
 [ext_resource type="Script" uid="uid://vohuvennxm33" path="res://Scripts/randomized_word.gd" id="1_lotee"]
 [ext_resource type="AudioStream" uid="uid://cf3rcbimoaev1" path="res://Audio Assets/EraseSound.wav" id="2_aauuw"]
 
 [node name="RandomizedWord" type="RichTextLabel" unique_id=63076526]
 offset_right = 204.0
 offset_bottom = 27.0
+theme_override_fonts/normal_font = ExtResource("1_kvjrv")
 text = "Randomized Word"
 script = ExtResource("1_lotee")
 MenuFile = "res://JSON/menu.json"

@@ -10,6 +10,8 @@
 [ext_resource type="Texture2D" uid="uid://6s5vtetlontr" path="res://Art Assets/intro/Intro_5_-_Fall_Gamejam.png" id="6_u8g3j"]
 [ext_resource type="AudioStream" uid="uid://d3d0mux8fqsw5" path="res://Audio Assets/Music/New 3 2026-11-15 1432.mp3" id="7_iy2k6"]
 [ext_resource type="Texture2D" uid="uid://d3m0hs4omxjtj" path="res://Art Assets/intro/Intro_6_-_Fall_Gamejam.png" id="7_wpiex"]
+[ext_resource type="Script" uid="uid://cev1o8y2jv1au" path="res://Scripts/press_space_text.gd" id="11_04ehn"]
+[ext_resource type="FontFile" uid="uid://ixsiem7or3k8" path="res://Art Assets/Fonts/Orange Lemonade.otf" id="11_75ufp"]
 
 [node name="IntroCutscene" type="Node2D" unique_id=1079639199]
 script = ExtResource("1_gxppd")
@@ -82,3 +84,24 @@ color = Color(0, 0, 0, 1)
 stream = ExtResource("7_iy2k6")
 autoplay = true
 parameters/looping = true
+
+[node name="SkipText" type="RichTextLabel" parent="." unique_id=1233215643]
+offset_left = 528.0
+offset_top = 139.0
+offset_right = 1450.0
+offset_bottom = 276.0
+theme_override_fonts/normal_font = ExtResource("11_75ufp")
+theme_override_font_sizes/normal_font_size = 97
+text = "* Press [Escape] to skip *"
+horizontal_alignment = 1
+
+[node name="PressSpaceText" type="RichTextLabel" parent="." unique_id=933141607]
+offset_left = 529.0
+offset_top = 875.0
+offset_right = 1440.0
+offset_bottom = 1002.0
+theme_override_fonts/normal_font = ExtResource("11_75ufp")
+theme_override_font_sizes/normal_font_size = 96
+text = "* Press Space *"
+horizontal_alignment = 1
+script = ExtResource("11_04ehn")
