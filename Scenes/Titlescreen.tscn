@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://70qtaexi8dtd" path="res://Scripts/titlescreen.gd" id="1_que75"]
 [ext_resource type="Script" uid="uid://d33kbtc5jfvxk" path="res://Scripts/screenfade.gd" id="3_pwk6s"]
-[ext_resource type="PackedScene" uid="uid://br5p21542pvkm" path="res://Scenes/main_playspace.tscn" id="4_yvq8y"]
+[ext_resource type="PackedScene" uid="uid://c874niwsfs1ci" path="res://Scenes/IntroCutscene.tscn" id="3_yvq8y"]
 
 [node name="Titlescreen" type="Control" unique_id=965093756]
 layout_mode = 3
@@ -21,7 +21,7 @@ script = ExtResource("3_pwk6s")
 StartHoldTime = 0.0
 EndHoldTime = 0.1
 FadeTime = 0.25
-FadeOutSceneChange = ExtResource("4_yvq8y")
+FadeOutSceneChange = ExtResource("3_yvq8y")
 InvertFade = true
 
 [node name="PlayButton" type="Button" parent="." unique_id=851801130]

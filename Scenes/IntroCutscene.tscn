@@ -1,0 +1,63 @@
+[gd_scene format=3 uid="uid://c874niwsfs1ci"]
+
+[ext_resource type="Script" uid="uid://bytsk01a4bt8i" path="res://Scripts/intro_cutscene.gd" id="1_gxppd"]
+[ext_resource type="Texture2D" uid="uid://v2ff6htsml8w" path="res://Art Assets/Placeholder/NjDttY.png" id="1_ub2q7"]
+[ext_resource type="Texture2D" uid="uid://7kjvfdlvief1" path="res://Art Assets/Placeholder/car.png" id="2_cwr80"]
+[ext_resource type="Texture2D" uid="uid://753oe08m6ja7" path="res://Art Assets/Placeholder/toughbird.jpg" id="3_o4cn7"]
+[ext_resource type="Script" uid="uid://d33kbtc5jfvxk" path="res://Scripts/screenfade.gd" id="5_iy2k6"]
+[ext_resource type="PackedScene" uid="uid://br5p21542pvkm" path="res://Scenes/main_playspace.tscn" id="6_cysq5"]
+
+[node name="IntroCutscene" type="Node2D" unique_id=1079639199]
+script = ExtResource("1_gxppd")
+
+[node name="panels" type="Node2D" parent="." unique_id=347202698]
+
+[node name="NjDttY" type="Sprite2D" parent="panels" unique_id=2124505930]
+position = Vector2(965.25, 542.25)
+scale = Vector2(5.5605187, 3.9327273)
+texture = ExtResource("1_ub2q7")
+
+[node name="Car" type="Sprite2D" parent="panels" unique_id=748658641]
+visible = false
+position = Vector2(964, 540)
+scale = Vector2(4.702439, 2.9725275)
+texture = ExtResource("2_cwr80")
+
+[node name="Toughbird" type="Sprite2D" parent="panels" unique_id=956018202]
+visible = false
+position = Vector2(964.75, 544.75)
+scale = Vector2(8.86073, 5.062212)
+texture = ExtResource("3_o4cn7")
+
+[node name="FadeOut" type="ColorRect" parent="." unique_id=1096121511]
+visible = false
+z_index = 3000
+offset_right = 1927.0
+offset_bottom = 1085.0
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+script = ExtResource("5_iy2k6")
+StartHoldTime = 0.0
+EndHoldTime = 0.1
+FadeTime = 0.25
+FadeOutSceneChange = ExtResource("6_cysq5")
+InvertFade = true
+
+[node name="FadeIn" type="ColorRect" parent="." unique_id=2131076930]
+visible = false
+z_index = 3000
+offset_right = 1927.0
+offset_bottom = 1085.0
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+script = ExtResource("5_iy2k6")
+StartHoldTime = 0.1
+EndHoldTime = 0.0
+FadeTime = 0.25
+autoFadeOnStart = true
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=920851587]
+z_index = -200
+offset_right = 1930.0
+offset_bottom = 1098.0
+color = Color(0, 0, 0, 1)
