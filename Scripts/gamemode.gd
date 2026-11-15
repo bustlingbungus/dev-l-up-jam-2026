@@ -1,5 +1,7 @@
 class_name Gamemode extends Node2D
 
+@export var MaxAllowedFailures : int = 5
+
 var FailedMenus : int = 0
 var SuccessfulMenus : int = 0
 
@@ -23,10 +25,12 @@ func SubmitMenu(menu : MenuTemplate) -> void:
 		SuccessfulMenus += 1
 	else:
 		FailedMenus += 1
+		if (FailedMenus >= MaxAllowedFailures):
+			EndGame()
 	
 	
-	$Successtext.text = "Successes: " + str(SuccessfulMenus)
-	$Failtext.text = "Failures: " + str(FailedMenus)
+	$Score/Successtext.text = "Turkeys Saved: " + str(SuccessfulMenus)
+	$Score/Failtext.text = "Failed Menus: " + str(FailedMenus)
 
 
 
@@ -44,3 +48,17 @@ func SelectDraggedMenu() -> void:
 	
 	# reset array
 	menu_array.clear()
+
+
+func EndGame() -> void:
+	# get rid of game elements
+	for child in $MenuSpawner.get_children():
+		var drag = child as DraggableMenu
+		if (drag != null):
+			drag.draggable == false
+		child.call_deferred("reparent", self)
+	$MenuSpawner.call_deferred("queue_free")
+	$HandFollower.queue_free()
+	$ColorRect2/RunTimer.Active = false
+	$GameOverFallGamejam/ColorRect2/ScoreText.text = $Score/Successtext.text
+	$GameOverFallGamejam.FadeIn()

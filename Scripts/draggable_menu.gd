@@ -4,6 +4,8 @@ class_name DraggableMenu extends Sprite2D
 @export var MaximizedMenu : PackedScene = null
 var maximized_menu : MenuTemplate = null
 
+var draggable : bool = true
+
 var _hovered : bool = false
 var _drag : bool = false
 var _mouse_disp : Vector2
@@ -123,13 +125,14 @@ func _handle_mouse_input() -> void:
 
 
 func MakeDragged() -> void:
-	$PagePickupDrop.play()
-	Movestate = MoveState.NORMAL
-	_mouse_disp = position - get_global_mouse_position()
-	_drag = true
-	
-	if (_hand != null):
-		_hand.SetSprite(HandFollower.HandSprite.CLOSED)
+	if (draggable):
+		$PagePickupDrop.play()
+		Movestate = MoveState.NORMAL
+		_mouse_disp = position - get_global_mouse_position()
+		_drag = true
+		
+		if (_hand != null):
+			_hand.SetSprite(HandFollower.HandSprite.CLOSED)
 
 
 func MakeNotDragged() -> void:

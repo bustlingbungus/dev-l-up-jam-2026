@@ -3,7 +3,6 @@
 [ext_resource type="Script" uid="uid://dvuuu2rd6itpl" path="res://Scripts/gamemode.gd" id="1_2ad61"]
 [ext_resource type="Texture2D" uid="uid://753oe08m6ja7" path="res://Art Assets/Placeholder/toughbird.jpg" id="1_jbq2g"]
 [ext_resource type="Script" uid="uid://bxypjdfrfqoaq" path="res://Scripts/WorkspaceArea.gd" id="2_t1qhy"]
-[ext_resource type="Texture2D" uid="uid://cbqj5no2x2rw3" path="res://Art Assets/Placeholder/Screenshot from 2026-11-01 18-10-10.png" id="3_l5cqv"]
 [ext_resource type="Script" uid="uid://dye6pi61bam21" path="res://Scripts/draggable_menu_spawber.gd" id="5_ylxo0"]
 [ext_resource type="PackedScene" uid="uid://drs3kn7saje1p" path="res://Prefabs/Menus/Draggables/Draggable1.tscn" id="6_2ad61"]
 [ext_resource type="PackedScene" uid="uid://dsft7fotlpstq" path="res://Prefabs/Menus/Draggables/Draggable2.tscn" id="7_ixtrt"]
@@ -14,6 +13,10 @@
 [ext_resource type="PackedScene" uid="uid://df1n5ouxqv2qh" path="res://Prefabs/hand_follower.tscn" id="11_ovpdj"]
 [ext_resource type="Texture2D" uid="uid://ci06fw820n4qk" path="res://Art Assets/TrashBin.png" id="13_rccvq"]
 [ext_resource type="Texture2D" uid="uid://csuagjqfexqb" path="res://Art Assets/TopLayerTrashBin.png" id="14_6g7y0"]
+[ext_resource type="Script" uid="uid://dfcgkodxudlqq" path="res://Scripts/run_timer.gd" id="15_6g7y0"]
+[ext_resource type="Texture2D" uid="uid://8ssdpqdmvqej" path="res://Art Assets/Table.png" id="15_apqes"]
+[ext_resource type="Texture2D" uid="uid://duve7jr16gmxm" path="res://Art Assets/Game_Over_-_Fall_Gamejam.png" id="16_apqes"]
+[ext_resource type="Script" uid="uid://blr7g7ltkg7du" path="res://Scripts/game_over_screen.gd" id="17_uj7a5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fs538"]
 size = Vector2(219.27272, 216.38318)
@@ -47,7 +50,6 @@ shape = SubResource("RectangleShape2D_fs538")
 z_index = -200
 position = Vector2(1720.905, 679.31)
 scale = Vector2(1.8333334, 3.713)
-texture = ExtResource("1_jbq2g")
 script = ExtResource("2_t1qhy")
 workspaceZone = 2
 
@@ -63,7 +65,6 @@ shape = SubResource("RectangleShape2D_fs538")
 z_index = -200
 position = Vector2(961, 678.5)
 scale = Vector2(1.6411765, 1.2396313)
-texture = ExtResource("3_l5cqv")
 script = ExtResource("2_t1qhy")
 
 [node name="Area2D" type="Area2D" parent="MainWorkspace" unique_id=669874626]
@@ -78,7 +79,6 @@ shape = SubResource("RectangleShape2D_l5cqv")
 z_index = -200
 position = Vector2(963.67993, 138.63425)
 scale = Vector2(2.8479998, 0.43430334)
-texture = ExtResource("3_l5cqv")
 script = ExtResource("2_t1qhy")
 workspaceZone = 3
 
@@ -103,23 +103,51 @@ position = Vector2(0, 761.27)
 [node name="PaperDropSoundEffect" type="AudioStreamPlayer" parent="MenuSpawner" unique_id=2043159537]
 stream = ExtResource("10_bknpk")
 
-[node name="Successtext" type="RichTextLabel" parent="." unique_id=940936206]
-offset_right = 203.0
-offset_bottom = 40.0
-theme_override_colors/default_color = Color(0, 0, 0, 1)
-text = "Successes: 0"
+[node name="Score" type="ColorRect" parent="." unique_id=548729549]
+offset_left = 41.0
+offset_top = 26.0
+offset_right = 529.0
+offset_bottom = 181.0
+color = Color(0, 0, 0, 0.36078432)
 
-[node name="Failtext" type="RichTextLabel" parent="." unique_id=1377170546]
-offset_left = 1.0
-offset_top = 27.0
-offset_right = 204.0
-offset_bottom = 67.0
-theme_override_colors/default_color = Color(0, 0, 0, 1)
-text = "Failures: 0"
+[node name="Successtext" type="RichTextLabel" parent="Score" unique_id=940936206]
+layout_mode = 0
+offset_left = 5.0
+offset_right = 542.0
+offset_bottom = 79.0
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/normal_font_size = 50
+text = "Turkeys Saved: 0"
+
+[node name="Failtext" type="RichTextLabel" parent="Score" unique_id=1377170546]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 74.0
+offset_right = 404.0
+offset_bottom = 219.0
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/normal_font_size = 50
+text = "Failed Menus: 0"
+
+[node name="Controls" type="ColorRect" parent="." unique_id=352014707]
+offset_left = 6.0
+offset_top = 959.0
+offset_right = 1495.0
+offset_bottom = 1041.0
+color = Color(0, 0, 0, 0.36078432)
+
+[node name="text" type="RichTextLabel" parent="Controls" unique_id=1125466160]
+layout_mode = 0
+offset_left = 5.0
+offset_right = 1516.0
+offset_bottom = 79.0
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/normal_font_size = 47
+text = "Left Mouse: Drag | Right Mouse: Erase | Escape: Return to Menu"
 
 [node name="Fade" type="ColorRect" parent="." unique_id=329495511]
 visible = false
-z_index = 3000
+z_index = 4000
 offset_right = 1927.0
 offset_bottom = 1085.0
 mouse_filter = 2
@@ -147,3 +175,67 @@ texture = ExtResource("13_rccvq")
 z_index = 2000
 scale = Vector2(0.475, 0.475)
 texture = ExtResource("14_6g7y0")
+
+[node name="ColorRect2" type="ColorRect" parent="." unique_id=279085663]
+offset_left = 814.0
+offset_top = 214.0
+offset_right = 1108.0
+offset_bottom = 367.0
+color = Color(0, 0, 0, 0.4627451)
+
+[node name="RunTimer" type="RichTextLabel" parent="ColorRect2" unique_id=1245595309 node_paths=PackedStringArray("gamemode")]
+layout_mode = 0
+offset_left = -25.0
+offset_top = -29.0
+offset_right = 319.0
+offset_bottom = 182.0
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/normal_font_size = 100
+text = "0:00"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("15_6g7y0")
+gamemode = NodePath("../..")
+
+[node name="Table" type="Sprite2D" parent="." unique_id=1767930088]
+z_index = -200
+position = Vector2(961.5, 537)
+scale = Vector2(1.8876953, 1.0742188)
+texture = ExtResource("15_apqes")
+
+[node name="GameOverFallGamejam" type="Sprite2D" parent="." unique_id=265138160 node_paths=PackedStringArray("fadeCover")]
+visible = false
+z_index = 3500
+position = Vector2(960, 540)
+texture = ExtResource("16_apqes")
+script = ExtResource("17_uj7a5")
+FadeTime = 15.0
+fadeCover = NodePath("../Fade")
+MenuScene = "res://Scenes/Titlescreen.tscn"
+
+[node name="ColorRect2" type="ColorRect" parent="GameOverFallGamejam" unique_id=491169449]
+offset_left = -942.0
+offset_top = -213.0
+offset_right = -263.0
+offset_bottom = 55.0
+color = Color(0, 0, 0, 0.4627451)
+
+[node name="ScoreText" type="RichTextLabel" parent="GameOverFallGamejam/ColorRect2" unique_id=1104360972]
+layout_mode = 0
+offset_left = 1.0
+offset_top = -34.0
+offset_right = 682.0
+offset_bottom = 295.0
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/normal_font_size = 100
+text = "Turkeys Saved: 0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="GameOverFallGamejam" unique_id=912801934]
+offset_left = 243.0
+offset_top = -214.0
+offset_right = 754.0
+offset_bottom = 30.0
+theme_override_font_sizes/font_size = 51
+text = "Return To Menu"

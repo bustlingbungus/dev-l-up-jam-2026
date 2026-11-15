@@ -1,4 +1,4 @@
-extends ColorRect
+class_name FadeCover extends ColorRect
 
 @export var StartHoldTime : float = 0.25
 @export var EndHoldTime : float = 0.25
@@ -62,7 +62,11 @@ func OnFadeComplete() -> void:
 
 
 func StartFade() -> void:
-	print("here")
-	_active = true
-	_holding = true
-	_timer = StartHoldTime
+	if (!_active):
+		_active = true
+		_holding = true
+		_timer = StartHoldTime
+		if (InvertFade):
+			color.a = 0.0
+		else:
+			color.a = 1.0

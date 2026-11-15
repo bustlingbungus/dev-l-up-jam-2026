@@ -24,7 +24,7 @@ FadeTime = 0.25
 FadeOutSceneChange = ExtResource("4_yvq8y")
 InvertFade = true
 
-[node name="Button" type="Button" parent="." unique_id=851801130]
+[node name="PlayButton" type="Button" parent="." unique_id=851801130]
 layout_mode = 0
 offset_left = 865.0
 offset_top = 250.0
@@ -32,4 +32,26 @@ offset_right = 1053.0
 offset_bottom = 381.0
 text = "Play"
 
-[connection signal="pressed" from="Button" to="." method="PlayButton"]
+[node name="ExitButton" type="Button" parent="." unique_id=326226374]
+layout_mode = 0
+offset_left = 865.0
+offset_top = 482.0
+offset_right = 1053.0
+offset_bottom = 613.0
+text = "Quit"
+
+[node name="FadeIn" type="ColorRect" parent="." unique_id=1601001637]
+visible = false
+z_index = 3000
+layout_mode = 0
+offset_right = 1927.0
+offset_bottom = 1085.0
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+script = ExtResource("3_pwk6s")
+StartHoldTime = 0.1
+EndHoldTime = 0.0
+FadeTime = 0.25
+autoFadeOnStart = true
+
+[connection signal="pressed" from="PlayButton" to="." method="PlayButton"]
