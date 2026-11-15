@@ -1,33 +1,49 @@
 [gd_scene format=3 uid="uid://c874niwsfs1ci"]
 
 [ext_resource type="Script" uid="uid://bytsk01a4bt8i" path="res://Scripts/intro_cutscene.gd" id="1_gxppd"]
-[ext_resource type="Texture2D" uid="uid://v2ff6htsml8w" path="res://Art Assets/Placeholder/NjDttY.png" id="1_ub2q7"]
-[ext_resource type="Texture2D" uid="uid://7kjvfdlvief1" path="res://Art Assets/Placeholder/car.png" id="2_cwr80"]
-[ext_resource type="Texture2D" uid="uid://753oe08m6ja7" path="res://Art Assets/Placeholder/toughbird.jpg" id="3_o4cn7"]
+[ext_resource type="Texture2D" uid="uid://bvy0es1hwddpj" path="res://Art Assets/intro/Intro_1_-_Fall_Gamejam.png" id="2_qkryq"]
+[ext_resource type="Texture2D" uid="uid://gm5835cpinr7" path="res://Art Assets/intro/Intro_2_-_Fall_Gamejam.png" id="3_04ehn"]
+[ext_resource type="Texture2D" uid="uid://ced7kdcfwg1ne" path="res://Art Assets/intro/Intro_3_-_Fall_Gamejam.png" id="4_75ufp"]
 [ext_resource type="Script" uid="uid://d33kbtc5jfvxk" path="res://Scripts/screenfade.gd" id="5_iy2k6"]
+[ext_resource type="Texture2D" uid="uid://b1rdqnqsm40k1" path="res://Art Assets/intro/Intro_4_-_Fall_Gamejam.png" id="5_xtyac"]
 [ext_resource type="PackedScene" uid="uid://br5p21542pvkm" path="res://Scenes/main_playspace.tscn" id="6_cysq5"]
+[ext_resource type="Texture2D" uid="uid://6s5vtetlontr" path="res://Art Assets/intro/Intro_5_-_Fall_Gamejam.png" id="6_u8g3j"]
+[ext_resource type="AudioStream" uid="uid://d3d0mux8fqsw5" path="res://Audio Assets/Music/New 3 2026-11-15 1432.mp3" id="7_iy2k6"]
+[ext_resource type="Texture2D" uid="uid://d3m0hs4omxjtj" path="res://Art Assets/intro/Intro_6_-_Fall_Gamejam.png" id="7_wpiex"]
 
 [node name="IntroCutscene" type="Node2D" unique_id=1079639199]
 script = ExtResource("1_gxppd")
 
 [node name="panels" type="Node2D" parent="." unique_id=347202698]
 
-[node name="NjDttY" type="Sprite2D" parent="panels" unique_id=2124505930]
-position = Vector2(965.25, 542.25)
-scale = Vector2(5.5605187, 3.9327273)
-texture = ExtResource("1_ub2q7")
+[node name="Intro1FallGamejam" type="Sprite2D" parent="panels" unique_id=1944930130]
+position = Vector2(960, 540)
+texture = ExtResource("2_qkryq")
 
-[node name="Car" type="Sprite2D" parent="panels" unique_id=748658641]
+[node name="Intro2FallGamejam" type="Sprite2D" parent="panels" unique_id=2029328349]
 visible = false
-position = Vector2(964, 540)
-scale = Vector2(4.702439, 2.9725275)
-texture = ExtResource("2_cwr80")
+position = Vector2(960, 540)
+texture = ExtResource("3_04ehn")
 
-[node name="Toughbird" type="Sprite2D" parent="panels" unique_id=956018202]
+[node name="Intro3FallGamejam" type="Sprite2D" parent="panels" unique_id=198893357]
 visible = false
-position = Vector2(964.75, 544.75)
-scale = Vector2(8.86073, 5.062212)
-texture = ExtResource("3_o4cn7")
+position = Vector2(960, 540)
+texture = ExtResource("4_75ufp")
+
+[node name="Intro4FallGamejam" type="Sprite2D" parent="panels" unique_id=553530974]
+visible = false
+position = Vector2(960, 540)
+texture = ExtResource("5_xtyac")
+
+[node name="Intro5FallGamejam" type="Sprite2D" parent="panels" unique_id=2121194594]
+visible = false
+position = Vector2(960, 540)
+texture = ExtResource("6_u8g3j")
+
+[node name="Intro6FallGamejam" type="Sprite2D" parent="panels" unique_id=250561422]
+visible = false
+position = Vector2(960, 540)
+texture = ExtResource("7_wpiex")
 
 [node name="FadeOut" type="ColorRect" parent="." unique_id=1096121511]
 visible = false
@@ -61,3 +77,8 @@ z_index = -200
 offset_right = 1930.0
 offset_bottom = 1098.0
 color = Color(0, 0, 0, 1)
+
+[node name="New3202611151432" type="AudioStreamPlayer" parent="." unique_id=530657840]
+stream = ExtResource("7_iy2k6")
+autoplay = true
+parameters/looping = true

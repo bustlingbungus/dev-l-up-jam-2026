@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dw3cl7foynx4d"
+path="res://.godot/imported/rewriting history 2026-11-15 1351.mp3-a2fc2bc98558ba77799a32728acb3e1a.mp3str"
+
+[deps]
+
+source_file="res://Audio Assets/Music/rewriting history 2026-11-15 1351.mp3"
+dest_files=["res://.godot/imported/rewriting history 2026-11-15 1351.mp3-a2fc2bc98558ba77799a32728acb3e1a.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

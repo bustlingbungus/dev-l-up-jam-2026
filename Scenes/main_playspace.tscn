@@ -17,6 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://8ssdpqdmvqej" path="res://Art Assets/Table.png" id="15_apqes"]
 [ext_resource type="Texture2D" uid="uid://duve7jr16gmxm" path="res://Art Assets/Game_Over_-_Fall_Gamejam.png" id="16_apqes"]
 [ext_resource type="Script" uid="uid://blr7g7ltkg7du" path="res://Scripts/game_over_screen.gd" id="17_uj7a5"]
+[ext_resource type="AudioStream" uid="uid://dw3cl7foynx4d" path="res://Audio Assets/Music/rewriting history 2026-11-15 1351.mp3" id="18_bntb3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fs538"]
 size = Vector2(219.27272, 216.38318)
@@ -243,3 +244,8 @@ offset_right = 754.0
 offset_bottom = 30.0
 theme_override_font_sizes/font_size = 51
 text = "Return To Menu"
+
+[node name="RewritingHistory202611151351" type="AudioStreamPlayer" parent="." unique_id=1963973076]
+stream = ExtResource("18_bntb3")
+autoplay = true
+parameters/looping = true

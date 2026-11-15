@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://d33kbtc5jfvxk" path="res://Scripts/screenfade.gd" id="3_pwk6s"]
 [ext_resource type="PackedScene" uid="uid://c874niwsfs1ci" path="res://Scenes/IntroCutscene.tscn" id="3_yvq8y"]
 [ext_resource type="Texture2D" uid="uid://xree0yo8ddn0" path="res://Art Assets/None_Turkey.png" id="4_yvq8y"]
+[ext_resource type="AudioStream" uid="uid://d3d0mux8fqsw5" path="res://Audio Assets/Music/New 3 2026-11-15 1432.mp3" id="5_s43k1"]
 
 [node name="Titlescreen" type="Control" unique_id=965093756]
 layout_mode = 3
@@ -87,5 +88,10 @@ autoFadeOnStart = true
 z_index = -1000
 position = Vector2(960, 540)
 texture = ExtResource("4_yvq8y")
+
+[node name="New3202611151432" type="AudioStreamPlayer" parent="." unique_id=396961198]
+stream = ExtResource("5_s43k1")
+autoplay = true
+parameters/looping = true
 
 [connection signal="pressed" from="PlayButton" to="." method="PlayButton"]

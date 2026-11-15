@@ -83,5 +83,6 @@ func EndGame() -> void:
 	$MenuSpawner.call_deferred("queue_free")
 	$HandFollower.queue_free()
 	$ColorRect2/RunTimer.Active = false
+	$RewritingHistory202611151351.stop()
 	$GameOverFallGamejam/ColorRect2/ScoreText.text = $Score/Successtext.text
 	$GameOverFallGamejam.FadeIn()
