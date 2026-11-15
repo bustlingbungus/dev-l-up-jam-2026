@@ -9,6 +9,9 @@ var _drag : bool = false
 var _mouse_disp : Vector2
 
 
+var gm : Gamemode = null
+
+
 enum MoveState
 {
 	NORMAL,
@@ -90,21 +93,33 @@ func _mouse_exit() -> void:
 func _handle_mouse_input() -> void:
 	if (Input.is_action_just_pressed("ui_accept")):
 		if (_hovered):
-			Movestate = MoveState.NORMAL
-			_mouse_disp = position - get_global_mouse_position()
-			_drag = true
+			# elect self to be dragged
+			if (gm != null):
+				gm.menu_array.append(self)
 	elif (Input.is_action_just_released("ui_accept")):
 		if (_drag):
-			_drag = false
-			if (_currSpace == WorkspaceArea.WorkspaceZone.INCOMING_BIN):
+			MakeNotDragged()
+
+
+func MakeDragged() -> void:
+	Movestate = MoveState.NORMAL
+	_mouse_disp = position - get_global_mouse_position()
+	_drag = true
+
+
+func MakeNotDragged() -> void:
+	_drag = false
+	
+	if (_currSpace == WorkspaceArea.WorkspaceZone.INCOMING_BIN):
 				Movestate = MoveState.SPAWNING
 				_spawn_travel_timer = SpawnTravelTime
 				TargetPosition.x = position.x
-			elif (_currSpace == WorkspaceArea.WorkspaceZone.OUTGOING_BIN):
-				Movestate = MoveState.SUBMISSION
-				TargetPosition.x = position.x
-				TargetPosition.y += 500.0
-				_spawn_travel_timer = SubmissionTravelTime
+	elif (_currSpace == WorkspaceArea.WorkspaceZone.OUTGOING_BIN):
+		Movestate = MoveState.SUBMISSION
+		TargetPosition.x = position.x
+		# nice magic number here
+		TargetPosition.y += 500.0
+		_spawn_travel_timer = SubmissionTravelTime
 
 
 func _area_entered(area : Area2D) -> void:

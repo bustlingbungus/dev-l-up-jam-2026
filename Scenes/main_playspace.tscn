@@ -65,6 +65,7 @@ shape = SubResource("RectangleShape2D_l5cqv")
 position = Vector2(200.25, 124.915)
 script = ExtResource("5_ylxo0")
 DraggableMenus = Array[PackedScene]([ExtResource("6_2ad61"), ExtResource("7_ixtrt")])
+spawnAmt = 2
 
 [node name="MenuTarget" type="Node2D" parent="MenuSpawner" unique_id=1172741195]
 position = Vector2(0, 761.27)
