@@ -33,53 +33,107 @@ func LoadMenu() -> void:
 					
 					
 					if (keys.size() > 1):
-						if (!_menu_has_available_indices(keys.size())):
-							queue_free()
-							return
-						
-						var rulesheets = _get_rulesheets()
-						if (!_rulesheets_all_loaded(rulesheets)):
-							return
-						
-						var indices = _get_available_indices(keys)
-						var idx = indices[randi_range(0, indices.size() - 1)]
-						# good index found
-						var rs = menuRef as RuleSheet
-						var default_val : bool = data[keys[idx]]
-						
-						# this word is on a rulesheet, see if this is a valid label for a rulesheet, 
-						if (rs != null):
-							# make sure the label doesn't result in contradictions
-							# this is a very lazy solution
-							var depth : int = 0
-							var max_depth = 50
-							while (_label_exists_in_contradicting_rulesheets(rs, rulesheets, keys[idx], default_val) && depth < max_depth):
-								idx = indices[randi_range(0, indices.size() - 1)]
-								depth += 1
-							if (depth >= max_depth):
-								queue_free()
-								return
-							# add this label to the rulesheet's labels
-							rs.labels.append(keys[idx])
-						
-						# word is on a normal menu, see if the label is a turkey
+						var this_rs = menuRef as RuleSheet
+						if (this_rs == null):
+							_loaded = _init_for_menus(keys, data)
 						else:
-							# see what rulesheets have to say about this item
-							IsTurkey = _get_rulesheet_verdict(rulesheets, keys[idx], default_val)
-							
-							if (IsTurkey):
-								menuRef.TotalTurkeys += 1
-								#keys[idx] = keys[idx] + "<- TURKEY"
-
-						# final commits before completing load
-						text = keys[idx]
-						menuRef.ChosenIndices[MenuFile].append(idx)
-						_loaded = true
+							_loaded = _init_for_rulesheet_words(this_rs, keys, data)
 
 
 
-func _label_allowed_by_rulesheets() -> bool:
-	return false
+
+func _init_for_rulesheet_words(this_rs : RuleSheet, keys : Array, data : Dictionary) -> bool:
+	# get a list of labels available for the current sheet
+	# remove labels that result in contradictions with other rulesheets
+	# if there are no labels left, return 
+	# otherwise, select random index from array
+	# add label to menu's label list, set text, add to chosen indices list
+	
+	# get available labels on this menu
+	var indices = _get_available_indices(keys)
+	# remove labels that result in contradictions with other rulesheets
+	indices = _remove_contradicting_indices(this_rs, keys, indices, data)
+	if (indices.size() == 0):
+		queue_free()
+		return false
+	
+	# get random index
+	var idx = indices[randi_range(0, indices.size() - 1)]
+	text = keys[idx]
+	menuRef.ChosenIndices[MenuFile].append(idx)
+	this_rs.labels.append(keys[idx])
+	
+	return true
+
+
+
+
+func _init_for_menus(keys : Array, data : Dictionary) -> bool:
+	# get a list of labels (indices) available for the current menu
+	# if there are no labels left, queue_free and return
+	# if not all rulesheets have been initialized, return 
+	# otherwise, select random index from array
+	# use rulesheets to determine if the label is turkey or not
+	# if turkey, increment menu's total turkey counter
+	# in any case, set text, add to chosen indices list
+	
+	# get list of available labels
+	var indices = _get_available_indices(keys)
+	if (indices.size() == 0):
+		queue_free()
+		return false
+	var rulesheets = _get_rulesheets()
+	if (!_rulesheets_all_loaded(rulesheets)):
+		return false
+	
+	# select random index
+	var idx = indices[randi_range(0, indices.size()-1)]
+	# determine if this index is turkey
+	var label = keys[idx]
+	IsTurkey = _get_rulesheet_verdict(rulesheets, label, data[label])
+	if (IsTurkey):
+		menuRef.TotalTurkeys += 1
+	text = label
+	menuRef.ChosenIndices[MenuFile].append(idx)
+	
+	return true
+
+
+
+
+func _remove_contradicting_indices(this_rs : RuleSheet, keys : Array, indices : Array, data : Dictionary) -> Array[int]:
+	var rulesheets = _get_rulesheets()
+	# re-construct array without selected indices
+	var arr : Array[int] = []
+	
+	for idx in indices:
+		var label = keys[idx]
+		# remove if the  label is ambiguous for the current menu
+		# AMBIGUOUS: this rulesheet allows turkey, but label is already non-turkey
+		if (this_rs.ruletype == RuleSheet.RuleType.ALLOW):
+			if (!data[label]):
+				continue
+		# AMBIGUOUS: this rulesheet bans non-turkey, but label is already turkey
+		elif (this_rs.ruletype == RuleSheet.RuleType.DISALLOW):
+			if (data[label]):
+				continue
+				
+		
+		# remove if the label is present on any other rulesheet with an opposite ruletype
+		var contradiction : bool = false
+		for rs in rulesheets:
+			if (rs.ruletype != this_rs.ruletype):
+				if (rs.HasLabel(label)):
+					contradiction = true
+					break
+		if (contradiction):
+			continue
+		
+		# if we make it here, the index is valid
+		arr.append(idx)
+	return arr
+
+
 
 func _rulesheets_all_loaded(rules : Array[RuleSheet]) -> bool:
 	for rs in rules:
@@ -87,18 +141,10 @@ func _rulesheets_all_loaded(rules : Array[RuleSheet]) -> bool:
 			return false
 	return true
 
-func _menu_has_available_indices(total_available_indices : int) -> bool:
-	if (!menuRef.ChosenIndices.has(MenuFile)):
-		return true
-	var indices_taken : int = menuRef.ChosenIndices[MenuFile].size()
-	return total_available_indices > indices_taken
-
 
 func _get_available_indices(keys : Array) -> Array[int]:
 	if (!menuRef.ChosenIndices.has(MenuFile)):
 		menuRef.ChosenIndices.get_or_add(MenuFile, [])
-	# this has fucking horrible efficiency
-	# do not put this game on your resume until this is fixed
 	var arr : Array[int] = []
 	for i in range(keys.size()):
 		if (!i in menuRef.ChosenIndices[MenuFile]):
@@ -120,19 +166,3 @@ func _get_rulesheet_verdict(rulesheets : Array[RuleSheet], label : String, defau
 		if (rs.HasLabel(label)):
 			return rs.LabelIsTurkey(label)
 	return default_val
-
-func _label_exists_in_contradicting_rulesheets(this_rs : RuleSheet, other_rules : Array[RuleSheet], label : String, default_val : bool) -> bool:
-	for rs in other_rules:
-		if (rs.ruletype != this_rs.ruletype):
-			if (rs.HasLabel(label)):
-				return true
-	
-	# make sure label is not ambiguous in the current rulesheet
-	if (this_rs.ruletype == RuleSheet.RuleType.ALLOW):
-		if (!default_val):
-			return true
-	elif (this_rs.ruletype == RuleSheet.RuleType.DISALLOW):
-		if (default_val):
-			return true
-	
-	return false

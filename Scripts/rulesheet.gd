@@ -10,13 +10,14 @@ enum RuleType
 
 var labels : Array[String] = []
 
-var _randomized_words_verified : bool = false
-
 var loaded : bool = false
 
 func _ready() -> void:
 	super()
 	_force_load_randomwords(self)
+	if (!_verify_random_words(self)):
+		queue_free()
+		return
 	loaded = true
 
 func HasLabel(label : String) -> bool:
