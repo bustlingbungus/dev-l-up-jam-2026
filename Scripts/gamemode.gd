@@ -17,6 +17,8 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	SelectDraggedMenu()
+	if (Input.is_action_just_pressed("ui_cancel")):
+		$GameOverFallGamejam.ExitToMenu()
 
 
 func SubmitMenu(menu : MenuTemplate) -> void:
@@ -39,9 +41,16 @@ func SelectDraggedMenu() -> void:
 		return
 	# don't bother sorting the array , O(nlogn), just search for the best element, O(n)
 	var best_menu : DraggableMenu = null
+	var best_z : int = -1
 	for menu in menu_array:
-		if (best_menu == null || best_menu.z_index < menu.z_index):
+		var curr_z : int
+		if (menu.visible):
+			curr_z = menu.z_index
+		else:
+			curr_z = menu.maximized_menu.z_index
+		if (best_menu == null || curr_z > best_z):
 			best_menu = menu
+			best_z = curr_z
 	
 	if (best_menu != null):
 		best_menu.MakeDragged()

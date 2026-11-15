@@ -31,6 +31,7 @@ func SpawnMenu() -> void:
 				add_child(menu)
 				menu.gm = _gamemode
 				menu.z_index = menu.z_index + spawnAmt + _total_spawned_rulesheets
+				menu.maximized_menu.z_index = menu.z_index
 				menu.TargetPosition = $MenuTarget.position
 				
 				
@@ -44,6 +45,7 @@ func SpawnMenu() -> void:
 				add_child(menu)
 				menu.gm = _gamemode
 				menu.z_index = menu.z_index + i
+				menu.maximized_menu.z_index = menu.z_index
 				menu.TargetPosition = $MenuTarget.position
 				menu.SubmitMenu.connect(SubmitMenu)
 	
