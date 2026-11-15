@@ -46,6 +46,7 @@ func OnFadeComplete() -> void:
 	$ColorRect2.visible = true
 	$Button.visible = true
 	$RichTextLabel.visible = true
+	$EndCredit.visible = true
 
 
 func ExitToMenu() -> void:

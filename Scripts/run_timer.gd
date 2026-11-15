@@ -17,7 +17,7 @@ func _process(delta: float) -> void:
 		text = MakeClockString()
 		if (_timer <= 0.0):
 			if (gamemode != null):
-				gamemode.EndGame()
+				gamemode.EndGame(false)
 		else:
 			_timer -= delta
 

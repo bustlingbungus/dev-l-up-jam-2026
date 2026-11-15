@@ -18,15 +18,19 @@
 [ext_resource type="Texture2D" uid="uid://ci06fw820n4qk" path="res://Art Assets/TrashBin.png" id="13_rccvq"]
 [ext_resource type="Texture2D" uid="uid://csuagjqfexqb" path="res://Art Assets/TopLayerTrashBin.png" id="14_6g7y0"]
 [ext_resource type="Script" uid="uid://dfcgkodxudlqq" path="res://Scripts/run_timer.gd" id="15_6g7y0"]
-[ext_resource type="Texture2D" uid="uid://8ssdpqdmvqej" path="res://Art Assets/Table.png" id="15_apqes"]
 [ext_resource type="Texture2D" uid="uid://duve7jr16gmxm" path="res://Art Assets/Game_Over_-_Fall_Gamejam.png" id="16_apqes"]
 [ext_resource type="Script" uid="uid://blr7g7ltkg7du" path="res://Scripts/game_over_screen.gd" id="17_uj7a5"]
 [ext_resource type="AudioStream" uid="uid://dw3cl7foynx4d" path="res://Audio Assets/Music/rewriting history 2026-11-15 1351.mp3" id="18_bntb3"]
+[ext_resource type="Texture2D" uid="uid://bpyl7mghxj2o" path="res://Art Assets/NewTable.png" id="19_puycc"]
 [ext_resource type="AudioStream" uid="uid://brlx2oj0bo7q1" path="res://Audio Assets/Music/New 4 2026-11-15 1442.mp3" id="22_5umli"]
 [ext_resource type="AudioStream" uid="uid://c3drdsmhb3qlg" path="res://Audio Assets/Music/New 2 2026-11-15 1617.mp3" id="22_383hq"]
+[ext_resource type="Texture2D" uid="uid://bxri63n6dqk1p" path="res://Art Assets/EndCredit.png" id="22_vr0nh"]
 [ext_resource type="Texture2D" uid="uid://bqieili0u8677" path="res://Art Assets/Incoming_Bin.png" id="25_3isrl"]
 [ext_resource type="FontFile" uid="uid://ixsiem7or3k8" path="res://Art Assets/Fonts/Orange Lemonade.otf" id="25_puycc"]
 [ext_resource type="Texture2D" uid="uid://q4848mes3l8j" path="res://Art Assets/TopLayer_Incoming_Bin.png" id="26_puycc"]
+[ext_resource type="AudioStream" uid="uid://bh1a8e2723x8o" path="res://Audio Assets/Music/New 3 2026-11-15 1734.mp3" id="29_71gxp"]
+[ext_resource type="Script" uid="uid://chlpvact70cx2" path="res://Scripts/victory_screen.gd" id="29_rxttr"]
+[ext_resource type="Texture2D" uid="uid://dj13570w6qvso" path="res://Art Assets/Win_Screen_-_Fall_Gamejam.png" id="29_vr0nh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fs538"]
 size = Vector2(219.27272, 216.38318)
@@ -216,9 +220,8 @@ gamemode = NodePath("../..")
 
 [node name="Table" type="Sprite2D" parent="." unique_id=1767930088]
 z_index = -200
-position = Vector2(961.5, 537)
-scale = Vector2(1.8876953, 1.0742188)
-texture = ExtResource("15_apqes")
+position = Vector2(960, 540)
+texture = ExtResource("19_puycc")
 
 [node name="GameOverFallGamejam" type="Sprite2D" parent="." unique_id=265138160 node_paths=PackedStringArray("fadeCover")]
 visible = false
@@ -229,6 +232,12 @@ script = ExtResource("17_uj7a5")
 FadeTime = 15.0
 fadeCover = NodePath("../Fade")
 MenuScene = "res://Scenes/Titlescreen.tscn"
+
+[node name="EndCredit" type="Sprite2D" parent="GameOverFallGamejam" unique_id=1588598079]
+visible = false
+position = Vector2(478, -64)
+scale = Vector2(0.6123047, 0.58203125)
+texture = ExtResource("22_vr0nh")
 
 [node name="New4202611151442" type="AudioStreamPlayer" parent="GameOverFallGamejam" unique_id=357793206]
 stream = ExtResource("22_5umli")
@@ -266,12 +275,12 @@ theme_override_font_sizes/font_size = 51
 text = "Return To Menu"
 
 [node name="RichTextLabel" type="RichTextLabel" parent="GameOverFallGamejam" unique_id=1525846724]
-offset_left = 246.0
+offset_left = 261.0
 offset_top = -214.0
-offset_right = 744.0
+offset_right = 708.0
 offset_bottom = 27.0
 mouse_filter = 2
-theme_override_font_sizes/normal_font_size = 60
+theme_override_font_sizes/normal_font_size = 48
 text = "[ Return To Menu ]"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -304,3 +313,65 @@ texture = ExtResource("25_3isrl")
 [node name="TopLayerIncomingBin" type="Sprite2D" parent="Mailbox" unique_id=1298999291]
 z_index = 2000
 texture = ExtResource("26_puycc")
+
+[node name="VictoryScreen" type="Sprite2D" parent="." unique_id=1829347601 node_paths=PackedStringArray("fadeCover")]
+visible = false
+z_index = 4015
+position = Vector2(960, 540)
+texture = ExtResource("29_vr0nh")
+script = ExtResource("29_rxttr")
+fadeCover = NodePath("../Fade")
+MenuScene = "res://Scenes/Titlescreen.tscn"
+
+[node name="EndCredit" type="Sprite2D" parent="VictoryScreen" unique_id=1812070436]
+visible = false
+position = Vector2(528.265, 17)
+scale = Vector2(0.77, 0.77)
+texture = ExtResource("22_vr0nh")
+
+[node name="New3202611151734" type="AudioStreamPlayer" parent="VictoryScreen" unique_id=1059009161]
+stream = ExtResource("29_71gxp")
+
+[node name="Gobble" type="AudioStreamPlayer" parent="VictoryScreen" unique_id=370402919]
+stream = ExtResource("22_383hq")
+
+[node name="ColorRect2" type="ColorRect" parent="VictoryScreen" unique_id=699914768]
+offset_left = -1262.0
+offset_top = -291.0
+offset_right = -583.00006
+offset_bottom = -23.0
+scale = Vector2(0.885, 0.885)
+color = Color(0, 0, 0, 0)
+
+[node name="ScoreText" type="RichTextLabel" parent="VictoryScreen/ColorRect2" unique_id=1765077025]
+layout_mode = 0
+offset_left = 515.258
+offset_top = 180.49998
+offset_right = 1196.2579
+offset_bottom = 509.5
+scale = Vector2(0.885, 0.885)
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/normal_font_size = 100
+text = "Turkeys Saved: 0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="VictoryScreen" unique_id=890205773]
+modulate = Color(1, 1, 1, 0)
+offset_left = 246.0
+offset_top = -148.00002
+offset_right = 756.99976
+offset_bottom = 95.999985
+theme_override_font_sizes/font_size = 51
+text = "Return To Menu"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="VictoryScreen" unique_id=1525452491]
+offset_left = 249.0
+offset_top = -148.0
+offset_right = 825.5083
+offset_bottom = 93.0
+mouse_filter = 2
+theme_override_font_sizes/normal_font_size = 60
+text = "[ Return To Menu ]"
+horizontal_alignment = 1
+vertical_alignment = 1

@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://do3x1fo8f7o55" path="res://Art Assets/hand.png" id="1_v3t1f"]
 [ext_resource type="Script" uid="uid://b1skmesfp055m" path="res://Scripts/hand_follower.gd" id="1_xu1e4"]
 [ext_resource type="Texture2D" uid="uid://cwit7df02txs7" path="res://Art Assets/Eraser-hand.png" id="4_oxhb6"]
+[ext_resource type="Texture2D" uid="uid://br1hy5ufip0ny" path="res://Art Assets/Cross-Hair-PNG-Clipart.png" id="5_axel7"]
 
 [node name="HandFollower" type="Node2D" unique_id=1480644634]
 script = ExtResource("1_xu1e4")
@@ -21,3 +22,8 @@ texture = ExtResource("1_aasbw")
 visible = false
 position = Vector2(214, 356)
 texture = ExtResource("4_oxhb6")
+
+[node name="CrossHairPngClipart" type="Sprite2D" parent="." unique_id=1566898035]
+position = Vector2(3.0000005, 3.0000005)
+scale = Vector2(0.02, 0.02)
+texture = ExtResource("5_axel7")

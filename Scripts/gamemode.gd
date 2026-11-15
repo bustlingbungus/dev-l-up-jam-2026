@@ -1,6 +1,7 @@
 class_name Gamemode extends Node2D
 
 @export var MaxAllowedFailures : int = 5
+@export var RequiredSuccesses : int = 20
 
 var FailedMenus : int = 0
 var SuccessfulMenus : int = 0
@@ -27,10 +28,12 @@ func SubmitMenu(menu : MenuTemplate) -> void:
 	# success condition
 	if (menu.TurkeysDetected == menu.TotalTurkeys && menu.FalseErases == 0):
 		SuccessfulMenus += 1
+		if (SuccessfulMenus >= RequiredSuccesses):
+			EndGame(true)
 	else:
 		FailedMenus += 1
 		if (FailedMenus >= MaxAllowedFailures):
-			EndGame()
+			EndGame(false)
 	
 	
 	$Score/Successtext.text = "Turkeys Saved: " + str(SuccessfulMenus)
@@ -75,7 +78,7 @@ func _find_highest_z_menu(node : Node, high : int) -> int:
 	return high
 
 
-func EndGame() -> void:
+func EndGame(victory : bool) -> void:
 	# get rid of game elements
 	for child in $MenuSpawner.get_children():
 		var drag = child as DraggableMenu
@@ -87,5 +90,10 @@ func EndGame() -> void:
 	$HandFollower.queue_free()
 	$ColorRect2/RunTimer.Active = false
 	$RewritingHistory202611151351.stop()
-	$GameOverFallGamejam/ColorRect2/ScoreText.text = $Score/Successtext.text
-	$GameOverFallGamejam.FadeIn()
+	
+	if (victory):
+		$VictoryScreen/ColorRect2/ScoreText.text = $Score/Successtext.text
+		$VictoryScreen.FadeIn()
+	else:
+		$GameOverFallGamejam/ColorRect2/ScoreText.text = $Score/Successtext.text
+		$GameOverFallGamejam.FadeIn()
