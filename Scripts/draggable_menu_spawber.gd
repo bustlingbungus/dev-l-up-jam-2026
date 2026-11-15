@@ -8,6 +8,7 @@ extends Node2D
 @export var AddRulesheetChance : float = 0.5
 
 var _gamemode : Gamemode = null
+var _total_spawned_rulesheets : int = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -21,6 +22,19 @@ func _process(delta: float) -> void:
 
 
 func SpawnMenu() -> void:
+	if (randf_range(0.0, 1.0) <= AddRulesheetChance):
+		if (DraggableRulesheets.size() > 0):
+			var scene = DraggableRulesheets[randi_range(0, DraggableRulesheets.size() - 1)]
+			var instance = scene.instantiate()
+			var menu = instance as DraggableMenu
+			if (menu != null):
+				add_child(menu)
+				menu.gm = _gamemode
+				menu.z_index = menu.z_index + spawnAmt + _total_spawned_rulesheets
+				menu.TargetPosition = $MenuTarget.position
+				
+				
+				
 	for i in range(spawnAmt):
 		if (DraggableMenus.size() > 0):
 			var scene = DraggableMenus[randi_range(0, DraggableMenus.size() - 1)]
@@ -33,16 +47,6 @@ func SpawnMenu() -> void:
 				menu.TargetPosition = $MenuTarget.position
 				menu.SubmitMenu.connect(SubmitMenu)
 	
-	if (randf_range(0.0, 1.0) <= AddRulesheetChance):
-		if (DraggableRulesheets.size() > 0):
-			var scene = DraggableRulesheets[randi_range(0, DraggableRulesheets.size() - 1)]
-			var instance = scene.instantiate()
-			var menu = instance as DraggableMenu
-			if (menu != null):
-				add_child(menu)
-				menu.gm = _gamemode
-				menu.z_index = menu.z_index + spawnAmt
-				menu.TargetPosition = $MenuTarget.position
 
 func SubmitMenu(menu : MenuTemplate) -> void:
 	_gamemode.SubmitMenu(menu)

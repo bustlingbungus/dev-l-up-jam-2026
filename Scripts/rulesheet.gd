@@ -12,13 +12,12 @@ var labels : Array[String] = []
 
 var _randomized_words_verified : bool = false
 
-#func _process(delta: float) -> void:
-	#super(delta)
-	#if (!_randomized_words_verified):
-		#if (_verify_random_words(self)):
-			#_randomized_words_verified = true
-		#else: # no words left, destroy parent draggable menu
+var loaded : bool = false
 
+func _ready() -> void:
+	super()
+	_force_load_randomwords(self)
+	loaded = true
 
 func HasLabel(label : String) -> bool:
 	return label in labels
@@ -29,6 +28,12 @@ func LabelIsTurkey(label : String) -> bool:
 	else:
 		return true
 
+func _force_load_randomwords(node : Node) -> void:
+	for child in node.get_children():
+		_force_load_randomwords(child)
+		var rw = child as RandomizedWord
+		if (rw != null):
+			rw.LoadMenu()
 
 func _verify_random_words(node : Node) -> bool:
 	for child in node.get_children():

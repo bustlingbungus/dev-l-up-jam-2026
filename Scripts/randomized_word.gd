@@ -37,10 +37,13 @@ func LoadMenu() -> void:
 							queue_free()
 							return
 						
+						var rulesheets = _get_rulesheets()
+						if (!_rulesheets_all_loaded(rulesheets)):
+							return
+						
 						var indices = _get_available_indices(keys)
 						var idx = indices[randi_range(0, indices.size() - 1)]
 						# good index found
-						var rulesheets = _get_rulesheets()
 						var rs = menuRef as RuleSheet
 						var default_val : bool = data[keys[idx]]
 						
@@ -53,7 +56,7 @@ func LoadMenu() -> void:
 							while (_label_exists_in_contradicting_rulesheets(rs, rulesheets, keys[idx], default_val) && depth < max_depth):
 								idx = indices[randi_range(0, indices.size() - 1)]
 								depth += 1
-							if (depth == max_depth):
+							if (depth >= max_depth):
 								queue_free()
 								return
 							# add this label to the rulesheet's labels
@@ -66,6 +69,7 @@ func LoadMenu() -> void:
 							
 							if (IsTurkey):
 								menuRef.TotalTurkeys += 1
+								#keys[idx] = keys[idx] + "<- TURKEY"
 
 						# final commits before completing load
 						text = keys[idx]
@@ -77,6 +81,11 @@ func LoadMenu() -> void:
 func _label_allowed_by_rulesheets() -> bool:
 	return false
 
+func _rulesheets_all_loaded(rules : Array[RuleSheet]) -> bool:
+	for rs in rules:
+		if (!rs.loaded):
+			return false
+	return true
 
 func _menu_has_available_indices(total_available_indices : int) -> bool:
 	if (!menuRef.ChosenIndices.has(MenuFile)):
@@ -121,9 +130,9 @@ func _label_exists_in_contradicting_rulesheets(this_rs : RuleSheet, other_rules 
 	# make sure label is not ambiguous in the current rulesheet
 	if (this_rs.ruletype == RuleSheet.RuleType.ALLOW):
 		if (!default_val):
-			return false
+			return true
 	elif (this_rs.ruletype == RuleSheet.RuleType.DISALLOW):
 		if (default_val):
-			return false
+			return true
 	
 	return false
