@@ -4,5 +4,15 @@
 	"Baguette Bread" : false,
 	"Turkey Sandwich" : true,
 	"Mashed Potatoes" : false,
-	"Caesar Salad" : false
+	"Caesar Salad" : false,
+	"Turkey Meatballs": true,
+	"Turkey Burger": true,
+	"Turkey Sausage": true,
+	"Potato Salad": false,
+	"Biscuits": false,
+	"Roast Ham": false,
+	"Gravy": false,
+	"Apple Pie": false,
+	"Beeschurger": false,
+	"Deviled Eggs": false
 }

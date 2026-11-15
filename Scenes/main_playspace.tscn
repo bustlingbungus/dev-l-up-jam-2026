@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://drs3kn7saje1p" path="res://Prefabs/Menus/Draggables/Draggable1.tscn" id="6_2ad61"]
 [ext_resource type="PackedScene" uid="uid://dsft7fotlpstq" path="res://Prefabs/Menus/Draggables/Draggable2.tscn" id="7_ixtrt"]
 [ext_resource type="PackedScene" uid="uid://cy8771lqnyykn" path="res://Prefabs/Menus/Draggables/DraggableRulesheet1.tscn" id="8_ly0qe"]
+[ext_resource type="PackedScene" uid="uid://d4irb4yfub0rs" path="res://Prefabs/Menus/Draggables/DraggableRulesheet2.tscn" id="9_ly0qe"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fs538"]
 size = Vector2(219.27272, 216.38318)
@@ -66,7 +67,7 @@ shape = SubResource("RectangleShape2D_l5cqv")
 position = Vector2(200.25, 124.915)
 script = ExtResource("5_ylxo0")
 DraggableMenus = Array[PackedScene]([ExtResource("6_2ad61"), ExtResource("7_ixtrt")])
-DraggableRulesheets = Array[PackedScene]([ExtResource("8_ly0qe")])
+DraggableRulesheets = Array[PackedScene]([ExtResource("8_ly0qe"), ExtResource("9_ly0qe")])
 spawnAmt = 2
 
 [node name="MenuTarget" type="Node2D" parent="MenuSpawner" unique_id=1172741195]
