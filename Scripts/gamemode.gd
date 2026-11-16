@@ -86,6 +86,7 @@ func EndGame(victory : bool) -> void:
 			drag.draggable == false
 		child.call_deferred("reparent", self)
 	Global.highscore = max(Global.highscore, SuccessfulMenus)
+	print(Global.highscore)
 	$MenuSpawner.call_deferred("queue_free")
 	$HandFollower.queue_free()
 	$ColorRect2/RunTimer.Active = false

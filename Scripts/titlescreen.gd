@@ -33,7 +33,11 @@ func ExitGame() -> void:
 
 func SetHighscoreText() -> void:
 	if (!Global.is_first_game):
+		print(Global.highscore)
+		$"highscore word".visible = true
 		$"Highscore text".visible = true
 		$"Highscore text".text = str(Global.highscore)
 	else:
+		print("first game")
+		$"highscore word".visible = false
 		$"Highscore text".visible = false

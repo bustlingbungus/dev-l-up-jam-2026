@@ -12,12 +12,14 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	if (!Loaded):
+		print("loading")
+		Load()
 
 
 func Load() -> void:
 	if (!Loaded):
-		var file = FileAccess.open("user://JSON/data.json", FileAccess.READ)
+		var file = FileAccess.open("user://data.json", FileAccess.READ)
 		#var file = FileAccess.open("res://JSON/data.json", FileAccess.READ)
 		if (file != null):
 			var json_string = file.get_as_text()
@@ -29,7 +31,7 @@ func Load() -> void:
 					highscore = data["highscore"]
 				if (data.has("first_game")):
 					is_first_game = data["first_game"]
-				Loaded = true
+		Loaded = true
 
 
 func Save() -> void:
@@ -37,7 +39,7 @@ func Save() -> void:
 		"highscore" : highscore,
 		"first_game" : is_first_game
 	}
-	var file = FileAccess.open("user://JSON/data.json", FileAccess.WRITE)
+	var file = FileAccess.open("user://data.json", FileAccess.WRITE)
 	#var file = FileAccess.open("res://JSON/data.json", FileAccess.WRITE)
 	if (file != null):
 		file.store_line(JSON.stringify(data_dict))
